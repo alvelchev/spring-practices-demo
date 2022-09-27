@@ -1,10 +1,13 @@
 package com.springpageable.service;
 
+import com.springpageable.dto.FutureDeviceDTO;
 import com.springpageable.dto.GetFutureDeviceResponseDTO;
+import com.springpageable.exception.ConflictException;
 import com.springpageable.mapper.FutureDeviceMapper;
 import com.springpageable.repository.FutureDeviceRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +19,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class FutureDeviceService {
 
-  private FutureDeviceRepository futureDeviceRepository;
+  private final FutureDeviceRepository futureDeviceRepository;
 
   private final FutureDeviceMapper futureDeviceMapper;
 
@@ -42,5 +45,28 @@ public class FutureDeviceService {
             .map(futureDeviceMapper::futureDeviceToFutureDeviceResponseDTO)
             .collect(Collectors.toList());
     return new PageImpl<>(devices, p, devices.size());
+  }
+
+  /**
+   * Creates new record in device future table, containing combination between
+   * serialNumber,productId and customerId
+   *
+   * @param futureDeviceDTO - {@link FutureDeviceDTO} object containing the new data
+   */
+  public void createFutureDevice(FutureDeviceDTO futureDeviceDTO) {
+
+    var futureDevice = futureDeviceMapper.futureDeviceDTOToFutureDevice(futureDeviceDTO);
+    try {
+      futureDeviceRepository.save(futureDevice);
+    } catch (DataIntegrityViolationException e) {
+      String errMsg =
+          String.format(
+              "Combination with serial number %s,productId %s and customerId %d already exists",
+              futureDeviceDTO.getSerialNumber(),
+              futureDeviceDTO.getProductId(),
+              futureDeviceDTO.getCustomerId());
+      log.error(errMsg);
+      throw new ConflictException(errMsg);
+    }
   }
 }

@@ -1,5 +1,6 @@
 package com.springpageable.controller;
 
+import com.springpageable.dto.FutureDeviceDTO;
 import com.springpageable.dto.GetFutureDeviceResponseDTO;
 import com.springpageable.service.FutureDeviceService;
 import com.springpageable.swagger.SwaggerErrorResponses;
@@ -16,10 +17,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 import static com.springpageable.configuration.WebPath.API_VERSION_1;
 import static com.springpageable.configuration.WebPath.PATH_FUTURE_DEVICES;
@@ -56,5 +57,14 @@ public class DeviceController {
       @RequestParam(name = "searchParameter", required = false, defaultValue = "")
           String searchParameter) {
     return futureDeviceService.retrieveFutureDevices(p, searchParameter);
+  }
+
+  @PostMapping(PATH_FUTURE_DEVICES)
+  @SwaggerErrorResponses
+  @ResponseStatus(HttpStatus.CREATED)
+  @ApiResponse(responseCode = "201")
+  @Operation(summary = "Creates new device future")
+  public void createFutureDevice(@Valid @RequestBody FutureDeviceDTO futureDeviceDTO) {
+    futureDeviceService.createFutureDevice(futureDeviceDTO);
   }
 }
