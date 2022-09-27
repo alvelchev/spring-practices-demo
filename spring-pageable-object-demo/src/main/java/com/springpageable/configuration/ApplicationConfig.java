@@ -1,5 +1,7 @@
 package com.springpageable.configuration;
 
+import com.springpageable.mapper.FutureDeviceMapper;
+import com.springpageable.mapper.FutureDeviceMapperImpl;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.servers.Server;
@@ -22,6 +24,11 @@ public class ApplicationConfig {
   @Bean
   public OpenAPI customOpenAPI() {
     return new OpenAPI().info(getInfo()).servers(getServers());
+  }
+
+  @Bean
+  public FutureDeviceMapper futureDeviceMapper() {
+    return new FutureDeviceMapperImpl();
   }
 
   private Info getInfo() {

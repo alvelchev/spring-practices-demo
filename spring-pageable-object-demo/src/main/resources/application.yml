@@ -4,7 +4,23 @@ server:
   servlet:
     context-path: /
   port: 8099
-
+# Spring configuration
+spring:
+  # Hibernate configuration
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: iomt_dts
+        jdbc.lob.non_contextual_creation: true
+    hibernate.ddl-auto: none
+  # Profiling configuration
+  profiles.active: local
+  # Database configurations
+  datasource:
+    url: jdbc:postgresql://localhost:5432/
+    username: iomt-connector
+    password: kla4st#en
 # Swagger-UI configurations
 springdoc:
   api-docs.enabled: true

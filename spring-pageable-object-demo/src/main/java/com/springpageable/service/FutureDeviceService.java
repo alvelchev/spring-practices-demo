@@ -1,17 +1,31 @@
 package com.springpageable.service;
 
 import com.springpageable.dto.GetFutureDeviceResponseDTO;
+import com.springpageable.mapper.FutureDeviceMapper;
+import com.springpageable.repository.FutureDeviceRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
 public class FutureDeviceService {
+
+  private FutureDeviceRepository futureDeviceRepository;
+
+  private final FutureDeviceMapper futureDeviceMapper;
+
+  @Autowired
+  public FutureDeviceService(
+      FutureDeviceRepository futureDeviceRepository, FutureDeviceMapper futureDeviceMapper) {
+    this.futureDeviceRepository = futureDeviceRepository;
+    this.futureDeviceMapper = futureDeviceMapper;
+  }
 
   /**
    * Find all future devices
@@ -22,14 +36,11 @@ public class FutureDeviceService {
    */
   public Page<GetFutureDeviceResponseDTO> retrieveFutureDevices(
       Pageable p, String searchParameter) {
-    ArrayList<GetFutureDeviceResponseDTO> getFutureDeviceResponseDTOS =
-        new ArrayList<GetFutureDeviceResponseDTO>();
-    var getFutureDeviceResponseDTO = new GetFutureDeviceResponseDTO();
-    getFutureDeviceResponseDTO.setCustomer("test");
-    getFutureDeviceResponseDTO.setId(1L);
-    getFutureDeviceResponseDTO.setProductId("8719030");
-    getFutureDeviceResponseDTO.setSerialNumber("testSerialNumber");
-    getFutureDeviceResponseDTOS.add(getFutureDeviceResponseDTO);
-    return new PageImpl<>(getFutureDeviceResponseDTOS, p, getFutureDeviceResponseDTOS.size());
+    var futureDevices = futureDeviceRepository.findAll();
+    var devices =
+        futureDevices.stream()
+            .map(futureDeviceMapper::futureDeviceToFutureDeviceResponseDTO)
+            .collect(Collectors.toList());
+    return new PageImpl<>(devices, p, devices.size());
   }
 }
