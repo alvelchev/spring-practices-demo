@@ -1,0 +1,56 @@
+# Application configuration
+server:
+  # Server path
+  servlet:
+    context-path: /
+  port: 8099
+
+# Swagger-UI configurations
+springdoc:
+  api-docs.enabled: true
+  pathsToMatch: /v*/**, /route/v*/**
+  swagger-ui:
+    server-url: http://localhost:8099
+    operationsSorter: alpha
+    path: /swagger-ui.html
+    tagsSorter: alpha
+    properties:
+      title: Spring Pageable response
+      description: demo project for returning pageable object containing data for easy filtering and pageing in the UI
+
+# Log configuration
+logging:
+  level:
+    com:
+      azure: ERROR
+      microsoft: ERROR
+      zaxxer: ERROR
+    org:
+      apache: ERROR
+      flywaydb.core.internal:
+        database: ERROR
+        license: ERROR
+      springframework: ERROR
+
+# Actuator configurations
+management:
+  endpoints:
+    # disable all, then enable only the needed ones
+    enabled-by-default: false
+    jmx:
+      exposure:
+        include: "health,info,metrics,env"
+    web:
+      exposure:
+        include: "health"
+  endpoint:
+    info:
+      enabled: true
+    health:
+      enabled: true
+    metrics:
+      enabled: true
+    env:
+      enabled: true
+  # Profiling configuration
+  profiles.active: local
