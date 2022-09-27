@@ -3,6 +3,7 @@ package com.springpageable.service;
 import com.springpageable.dto.FutureDeviceDTO;
 import com.springpageable.dto.GetFutureDeviceResponseDTO;
 import com.springpageable.exception.ConflictException;
+import com.springpageable.exception.ResourceNotFoundException;
 import com.springpageable.mapper.FutureDeviceMapper;
 import com.springpageable.repository.FutureDeviceRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -68,5 +69,23 @@ public class FutureDeviceService {
       log.error(errMsg);
       throw new ConflictException(errMsg);
     }
+  }
+
+  /**
+   * Deletes a future device
+   *
+   * @param id - id of the device to be deleted
+   */
+  public void deleteFutureDevice(long id) {
+    var futureDevice =
+        futureDeviceRepository
+            .findById(id)
+            .orElseThrow(
+                () -> {
+                  String errMsg = String.format("No future device found for id: %d", id);
+                  log.error(errMsg);
+                  throw new ResourceNotFoundException(errMsg);
+                });
+    futureDeviceRepository.deleteById(futureDevice.getId());
   }
 }

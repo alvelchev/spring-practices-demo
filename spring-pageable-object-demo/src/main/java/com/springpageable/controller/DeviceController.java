@@ -21,9 +21,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 
-import static com.springpageable.configuration.WebPath.API_VERSION_1;
-import static com.springpageable.configuration.WebPath.PATH_FUTURE_DEVICES;
+import static com.springpageable.configuration.WebPath.*;
 
 @RestController
 @RequestMapping(API_VERSION_1)
@@ -66,5 +66,14 @@ public class DeviceController {
   @Operation(summary = "Creates new device future")
   public void createFutureDevice(@Valid @RequestBody FutureDeviceDTO futureDeviceDTO) {
     futureDeviceService.createFutureDevice(futureDeviceDTO);
+  }
+
+  @DeleteMapping(value = PATH_REMOVE_FUTURE_DEVICE)
+  @SwaggerErrorResponses
+  @Operation(summary = "Deletes a future device by id")
+  @Parameter(name = "id", example = "1", description = "The id of the future device to be deleted")
+  @ApiResponse(responseCode = "200")
+  public void deleteFutureDevice(@PathVariable @Positive long id) {
+    futureDeviceService.deleteFutureDevice(id);
   }
 }
