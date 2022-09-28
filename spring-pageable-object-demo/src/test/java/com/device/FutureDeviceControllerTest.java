@@ -17,6 +17,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import static com.device.mock.Constants.FIXTURE_FUTURE_DEVICE_DTO;
+import static com.device.mock.Constants.TEST_CUSTOMER_ID;
 import static com.springpageable.configuration.WebPath.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
@@ -32,12 +34,14 @@ class FutureDeviceControllerTest {
 
   private ObjectMapper objectMapper;
 
-  @InjectMocks private DeviceController underTest;
+  @InjectMocks
+  private DeviceController underTest;
 
-  @Fixture("futureDeviceDTO")
+  @Fixture(FIXTURE_FUTURE_DEVICE_DTO)
   private FutureDeviceDTO futureDeviceDTO;
 
-  @Mock private FutureDeviceService mockFutureDeviceService;
+  @Mock
+  private FutureDeviceService mockFutureDeviceService;
 
   @BeforeEach
   void setUp() throws Exception {
@@ -54,22 +58,18 @@ class FutureDeviceControllerTest {
   @Test
   void testThat_createDeviceFutureCatalog_invokesFutureDeviceService() throws Exception {
     // Act
-    mockMvc
-        .perform(
-            post(API_VERSION_1 + PATH_FUTURE_DEVICES)
-                .content(objectMapper.writeValueAsString(futureDeviceDTO))
-                .contentType(APPLICATION_JSON))
-        .andExpect(status().isCreated());
+    mockMvc.perform(post(API_VERSION_1 + PATH_FUTURE_DEVICES)
+                    .content(objectMapper.writeValueAsString(futureDeviceDTO))
+                    .contentType(APPLICATION_JSON))
+            .andExpect(status().isCreated());
   }
 
   @Test
   void testThat_deleteFutureDevice_returnsStatusOk() throws Exception {
-    // Act
-    mockMvc
-        .perform(
-            delete(API_VERSION_1 + PATH_REMOVE_FUTURE_DEVICE, 1L)
-                .contentType(MediaType.APPLICATION_JSON))
-        .andExpect(status().isOk());
+    //Act
+    mockMvc.perform(delete(API_VERSION_1 + PATH_REMOVE_FUTURE_DEVICE, TEST_CUSTOMER_ID)
+                    .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk());
 
     // Assert
     verify(mockFutureDeviceService).deleteFutureDevice(anyLong());

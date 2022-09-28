@@ -16,9 +16,7 @@ public class CountryDTO implements Comparable<CountryDTO> {
 
   @Override
   public int compareTo(CountryDTO o) {
-    return o == null
-        ? 1
-        : Comparator.comparing(CountryDTO::getName, Comparator.nullsFirst(String::compareTo))
+    return o == null ? 1 : Comparator.comparing(CountryDTO::getName, Comparator.nullsFirst(String::compareTo))
             .compare(this, o);
   }
 }

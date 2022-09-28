@@ -20,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
+import static com.device.mock.Constants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -34,13 +35,12 @@ class FutureDeviceServiceTest {
   @Mock private FutureDeviceRepository mockFutureDeviceRepository;
   @Mock private Pageable mockPageable;
 
-  @Fixture("futureDeviceDTO")
+  @Fixture(FIXTURE_FUTURE_DEVICE_DTO)
   private FutureDeviceDTO futureDeviceDTO;
-
-  @Fixture("futureDevice")
+  @Fixture(FIXTURE_FUTURE_DEVICE)
   private List<FutureDevice> futureDeviceList;
 
-  @Fixture("getFutureDeviceResponseDTO")
+  @Fixture(FIXTURE_GET_FUTURE_DEVICE_RESPONSE_DTO)
   private List<GetFutureDeviceResponseDTO> getFutureDeviceResponseDtoList;
 
   @BeforeEach
@@ -53,11 +53,10 @@ class FutureDeviceServiceTest {
   @Test
   void testThat_deleteFutureDevice_returnsResult() throws BadRequestException {
     // Arrange
-    when(mockFutureDeviceRepository.findById(anyLong()))
-        .thenReturn(Optional.of(futureDeviceList.get(0)));
+    when(mockFutureDeviceRepository.findById(anyLong())).thenReturn(Optional.of(futureDeviceList.get(0)));
 
     // Act
-    underTest.deleteFutureDevice(1L);
+    underTest.deleteFutureDevice(TEST_CUSTOMER_ID);
 
     // Assert
     verify(mockFutureDeviceRepository).deleteById(anyLong());
@@ -70,9 +69,9 @@ class FutureDeviceServiceTest {
 
     // Act
     var thrown =
-        assertThrows(ResourceNotFoundException.class, () -> underTest.deleteFutureDevice(19264L));
+        assertThrows(ResourceNotFoundException.class, () -> underTest.deleteFutureDevice(TEST_CUSTOMER_ID));
 
     // Assert
-    assertEquals("No future device found for id: 19264", thrown.getMessage());
+    assertEquals("No future device found for id: 15", thrown.getMessage());
   }
 }
