@@ -1,0 +1,50 @@
+[
+  {
+    "name": "French Guiana",
+    "countryCode": "GF"
+  },
+  {
+    "name": "Guadeloupe",
+    "countryCode": "GP"
+  },
+  {
+    "name": "Martinique",
+    "countryCode": "MQ"
+  },
+  {
+    "name": "Saint Barthelemy",
+    "countryCode": "BL"
+  },
+  {
+    "name": "Saint Martin",
+    "countryCode": "MAF"
+  },
+  {
+    "name": "Mayotte",
+    "countryCode": "YT"
+  },
+  {
+    "name": "Reunion",
+    "countryCode": "RE"
+  },
+  {
+    "name": "French Polynesia",
+    "countryCode": "PF"
+  },
+  {
+    "name": "Saint Pierre and Miquelon",
+    "countryCode": "PM"
+  },
+  {
+    "name": "Wallis and Futuna",
+    "countryCode": "WF"
+  },
+  {
+    "name": "New Caledonia",
+    "countryCode": "NC"
+  },
+  {
+    "name": "French Southern and Antarctic Lands",
+    "countryCode": "TF"
+  }
+]
