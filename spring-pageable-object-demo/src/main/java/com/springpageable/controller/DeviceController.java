@@ -27,7 +27,7 @@ import static com.springpageable.configuration.WebPath.*;
 
 @RestController
 @RequestMapping(API_VERSION_1)
-@Tag(name = "Device future operations", description = "Operations related to device future")
+@Tag(name = "Device future operations", description = "Basic CRUD operations related to device future")
 public class DeviceController {
 
   private final FutureDeviceService futureDeviceService;
