@@ -1,7 +1,9 @@
 # Spring Boot Web Application, support data jpa and pageable and sorting result
 
-In this part of the tutorial series, I show how to setup a Spring MVC controller to suport CRUD operations, a Spring
-service facad over a Spring Data JPA repository with pagination support using MapStruct
+In this project is demonstrated main Java Spring concepts.
+Model view controller architecture, using mapstruct for objects mapping,flyway for database migration,JUNIT 5 configuration for test coverage,read and filter data from json file and return it like a response, basic CRUD operations.Also is demonstrated how to return a Pageable response which is easy to filter, sorting and etc.
+
+Example Pageable response:
 
 ```yaml
 {
