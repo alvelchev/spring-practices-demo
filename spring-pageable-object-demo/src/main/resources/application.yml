@@ -6,12 +6,19 @@ server:
   port: 8099
 # Spring configuration
 spring:
+  # Flyway configuration
+  flyway:
+    schemas: dts
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 0
+    table: dts_schema_version
   # Hibernate configuration
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        default_schema: iomt_dts
+        default_schema: dts
         jdbc.lob.non_contextual_creation: true
     hibernate.ddl-auto: none
   # Profiling configuration

@@ -1,0 +1,9 @@
+# Spring configuration
+spring:
+  # Database configurations
+  datasource:
+    url: jdbc:postgresql://localhost:5432/
+    username: iomt-connector
+    password: kla4st#en
+  # Flyway configuration
+  flyway.locations: classpath:db/local_migrations

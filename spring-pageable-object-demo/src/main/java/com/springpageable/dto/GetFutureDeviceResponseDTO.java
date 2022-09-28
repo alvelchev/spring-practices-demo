@@ -15,6 +15,6 @@ public class GetFutureDeviceResponseDTO {
   @Schema(example = "8719030")
   private String productId;
 
-  @Schema(example = "AlexCustomer")
-  private String customer;
+  @Schema(example = "1")
+  private Long customerId;
 }
