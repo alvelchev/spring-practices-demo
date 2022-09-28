@@ -8,6 +8,7 @@ Model view controller architecture, using mapstruct for objects mapping,flyway f
 - Flyway: https://www.baeldung.com/database-migrations-with-flyway
 - JUNIT5: https://www.baeldung.com/junit-5
 - Global exception handler in JAVA: https://www.baeldung.com/java-global-exception-handler
+- Actuator: https://www.baeldung.com/spring-boot-actuators
 
 Example Pageable response:
 
