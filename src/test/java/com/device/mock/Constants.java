@@ -25,6 +25,7 @@ public final class Constants {
   public static final String TEST_422_USERNAME = "snowjous";
 
   public static final String LIST_OF_USERS = "users";
+  public static final String TEST_SEARCH_PARAMETER = "searchParameter";
 
 
 
