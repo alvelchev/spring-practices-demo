@@ -1,0 +1,25 @@
+{
+  "getUserResponseDTOs": [
+    {
+      "firstName": "John",
+      "lastName": "Snow",
+      "username": "snowjous",
+      "email": "john.snow@bbraun.com",
+      "isInternal": true
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Marley",
+      "username": "marlbojm",
+      "email": "bob.marley@bbraun.com",
+      "isInternal": true
+    },
+    {
+      "firstName": "Georgi",
+      "lastName": "Asparuhov",
+      "username": "aspagebg",
+      "email": "georgi.asparuhov@bbraun.com",
+      "isInternal": true
+    }
+  ]
+}

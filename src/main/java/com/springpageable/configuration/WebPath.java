@@ -7,6 +7,9 @@ public final class WebPath {
   public static final String PATH_REMOVE_FUTURE_DEVICE = "/device/futures/{id}";
   public static final String PATH_COUNTRIES = "/countries";
   public static final String PATH_COUNTRIES_REGION_TYPE = "/regions/{regionId}/countries";
+  public static final String PATH_USERS = "/users";
+
+  public static final String LIST_OF_USERS = "users";
 
   private WebPath() {}
 }

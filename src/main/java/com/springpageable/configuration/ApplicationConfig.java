@@ -2,6 +2,8 @@ package com.springpageable.configuration;
 
 import com.springpageable.mapper.FutureDeviceMapper;
 import com.springpageable.mapper.FutureDeviceMapperImpl;
+import com.springpageable.mapper.UserMapper;
+import com.springpageable.mapper.UserMapperImpl;
 import com.springpageable.storage.CountryStorage;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -30,6 +32,10 @@ public class ApplicationConfig {
   @Bean
   public FutureDeviceMapper futureDeviceMapper() {
     return new FutureDeviceMapperImpl();
+  }
+  @Bean
+  public UserMapper userMapper() {
+    return new UserMapperImpl();
   }
 
   @Bean

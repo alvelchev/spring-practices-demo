@@ -20,5 +20,10 @@ public final class Constants {
   public static final int ALL_COUNTRIES_SIZE = 243;
   public static final String EMPTY_STRING = "";
 
+  public static final String LIST_OF_GET_USER_RESPONSE_DTO = "getUserResponseDTOs";
+  public static final String TEST_CONTENT = "content";
+  public static final String TEST_422_USERNAME = "snowjous";
+
+
   private Constants() {}
 }
