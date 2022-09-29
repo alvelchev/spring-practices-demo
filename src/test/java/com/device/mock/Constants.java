@@ -24,6 +24,9 @@ public final class Constants {
   public static final String TEST_CONTENT = "content";
   public static final String TEST_422_USERNAME = "snowjous";
 
+  public static final String LIST_OF_USERS = "users";
+
+
 
   private Constants() {}
 }

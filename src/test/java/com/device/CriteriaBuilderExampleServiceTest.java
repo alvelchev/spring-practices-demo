@@ -19,9 +19,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-import static com.device.mock.Constants.LIST_OF_GET_USER_RESPONSE_DTO;
-import static com.device.mock.Constants.TEST_422_USERNAME;
-import static com.springpageable.configuration.WebPath.LIST_OF_USERS;
+import static com.device.mock.Constants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
