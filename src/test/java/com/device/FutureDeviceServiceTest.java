@@ -19,6 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +38,7 @@ class FutureDeviceServiceTest {
 
   @Mock private FutureDeviceRepository mockFutureDeviceRepository;
   @Mock private UserRepository mockUserRepository;
+  @Mock private Pageable mockPageable;
 
   @Fixture(FIXTURE_FUTURE_DEVICE_DTO)
   private FutureDeviceDTO futureDeviceDTO;
@@ -108,5 +110,18 @@ class FutureDeviceServiceTest {
     assertEquals(String.format("Combination with serial number %s,productId %s and customerId %d already exists",
                     futureDeviceDTO.getSerialNumber(), futureDeviceDTO.getProductId(), futureDeviceDTO.getCustomerId()),
             thrown.getMessage());
+  }
+
+  @Test
+  void testThat_retrieveFutureDevices_returnsResult() throws BadRequestException {
+    // Arrange
+    when(mockFutureDeviceRepository.findAll()).thenReturn(futureDeviceList);
+
+    // Act
+    var actualResult = underTest.retrieveFutureDevices(mockPageable, TEST_SEARCH_PARAMETER).getContent();
+
+    // Assert
+    verify(mockFutureDeviceRepository).findAll();
+    assertEquals(getFutureDeviceResponseDtoList.get(0).getId(), actualResult.get(0).getId());
   }
 }

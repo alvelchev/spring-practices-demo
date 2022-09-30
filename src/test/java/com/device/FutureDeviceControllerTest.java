@@ -1,8 +1,10 @@
 package com.device;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springpageable.controller.DeviceController;
 import com.springpageable.dto.FutureDeviceDTO;
+import com.springpageable.dto.GetFutureDeviceResponseDTO;
 import com.springpageable.service.FutureDeviceService;
 import ie.corballis.fixtures.annotation.Fixture;
 import ie.corballis.fixtures.annotation.FixtureAnnotations;
@@ -12,19 +14,23 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static com.device.mock.Constants.FIXTURE_FUTURE_DEVICE_DTO;
-import static com.device.mock.Constants.TEST_CUSTOMER_ID;
+import java.util.List;
+
+import static com.device.mock.Constants.*;
 import static com.springpageable.configuration.WebPath.*;
-import static org.mockito.ArgumentMatchers.anyLong;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
@@ -53,6 +59,30 @@ class FutureDeviceControllerTest {
             .build();
 
     objectMapper = new ObjectMapper();
+  }
+
+  @Test
+  void testThat_retrieveFutureDevices_returnsResult() throws Exception {
+    // Arrange
+    var expectedResult = List.of(new GetFutureDeviceResponseDTO());
+    when(mockFutureDeviceService.retrieveFutureDevices(any(Pageable.class), anyString()))
+            .thenReturn(new PageImpl<>(expectedResult));
+
+    // Act
+    var mvcResult = mockMvc.perform(get(API_VERSION_1 + PATH_FUTURE_DEVICES)
+                    .param(SEARCH_PARAMETER_KEY, TEST_SERIAL_NUMBER)
+                    .contentType(APPLICATION_JSON)
+                    .accept(APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andReturn();
+
+    var actualResult = objectMapper.readTree(mvcResult.getResponse().getContentAsString());
+    var actualContent = objectMapper.readValue(actualResult.get(CONTENT_KEY).toString(),
+            new TypeReference<List<GetFutureDeviceResponseDTO>>() {});
+
+    // Assert
+    assertEquals(expectedResult, actualContent);
+    verify(mockFutureDeviceService).retrieveFutureDevices(any(Pageable.class), eq(TEST_SERIAL_NUMBER));
   }
 
   @Test

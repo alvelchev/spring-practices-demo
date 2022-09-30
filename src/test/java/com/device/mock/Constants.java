@@ -19,6 +19,10 @@ public final class Constants {
   public static final String NON_EXISTING_COUNTRY_CODE = "Non Existing";
   public static final int ALL_COUNTRIES_SIZE = 243;
   public static final String EMPTY_STRING = "";
+  public static final String CONTENT_KEY = "content";
+  public static final String SEARCH_PARAMETER_KEY = "searchParameter";
+  public static final String TEST_SERIAL_NUMBER = "101283";
+
 
   public static final String LIST_OF_GET_USER_RESPONSE_DTO = "getUserResponseDTOs";
   public static final String TEST_CONTENT = "content";
