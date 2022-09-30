@@ -23,4 +23,6 @@ public class FutureDevice extends Auditable implements Serializable {
   private String productId;
 
   private Long customerId;
+
+  private int healthStatus;
 }

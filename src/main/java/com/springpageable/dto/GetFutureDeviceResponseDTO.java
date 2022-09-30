@@ -1,5 +1,7 @@
 package com.springpageable.dto;
 
+import com.springpageable.swagger.SwaggerHealthStatusDetailsDTO;
+import com.springpageable.utils.HealthStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -17,4 +19,7 @@ public class GetFutureDeviceResponseDTO {
 
   @Schema(example = "1")
   private Long customerId;
+
+  @Schema(implementation = SwaggerHealthStatusDetailsDTO.class)
+  private HealthStatus.Details healthStatus;
 }

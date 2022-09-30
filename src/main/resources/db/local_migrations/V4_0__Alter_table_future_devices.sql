@@ -1,0 +1,1 @@
+ALTER TABLE dts."future_device" ADD COLUMN IF NOT EXISTS health_status SMALLINT DEFAULT 0 NOT NULL;
