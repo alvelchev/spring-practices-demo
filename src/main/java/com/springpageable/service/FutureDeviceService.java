@@ -6,6 +6,7 @@ import com.springpageable.exception.ConflictException;
 import com.springpageable.exception.ResourceNotFoundException;
 import com.springpageable.model.mapper.FutureDeviceMapper;
 import com.springpageable.repository.FutureDeviceRepository;
+import com.springpageable.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -21,14 +22,16 @@ import java.util.stream.Collectors;
 public class FutureDeviceService {
 
   private final FutureDeviceRepository futureDeviceRepository;
+  private final UserRepository userRepository;
 
   private final FutureDeviceMapper futureDeviceMapper;
 
   @Autowired
   public FutureDeviceService(
-      FutureDeviceRepository futureDeviceRepository, FutureDeviceMapper futureDeviceMapper) {
+      FutureDeviceRepository futureDeviceRepository, FutureDeviceMapper futureDeviceMapper,UserRepository userRepository) {
     this.futureDeviceRepository = futureDeviceRepository;
     this.futureDeviceMapper = futureDeviceMapper;
+    this.userRepository=userRepository;
   }
 
   /**
@@ -55,7 +58,11 @@ public class FutureDeviceService {
    * @param futureDeviceDTO - {@link FutureDeviceDTO} object containing the new data
    */
   public void createFutureDevice(FutureDeviceDTO futureDeviceDTO) {
-
+    userRepository.findById(futureDeviceDTO.getCustomerId()).orElseThrow(() -> {
+      String errMsg = String.format("There is no customer with id %s", futureDeviceDTO.getCustomerId());
+      log.error(errMsg);
+      throw new ResourceNotFoundException(errMsg);
+    });
     var futureDevice = futureDeviceMapper.futureDeviceDTOToFutureDevice(futureDeviceDTO);
     try {
       futureDeviceRepository.save(futureDevice);
