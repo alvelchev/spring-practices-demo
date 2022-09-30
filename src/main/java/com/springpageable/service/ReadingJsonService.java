@@ -1,9 +1,9 @@
 package com.springpageable.service;
 
 import com.springpageable.dto.CountryDTO;
+import com.springpageable.enums.RegionType;
 import com.springpageable.exception.BadRequestException;
 import com.springpageable.storage.CountryStorage;
-import com.springpageable.utils.RegionType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

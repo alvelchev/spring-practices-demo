@@ -1,9 +1,9 @@
 package com.springpageable.controller;
 
 import com.springpageable.dto.CountryDTO;
-import com.springpageable.dto.SwaggerGetCountryResponseDTO;
 import com.springpageable.service.ReadingJsonService;
 import com.springpageable.swagger.SwaggerErrorResponses;
+import com.springpageable.swagger.SwaggerGetCountryResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;

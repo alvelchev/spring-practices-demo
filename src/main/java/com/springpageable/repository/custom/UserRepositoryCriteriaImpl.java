@@ -1,7 +1,7 @@
 package com.springpageable.repository.custom;
 
+import com.springpageable.enums.LdapGroup;
 import com.springpageable.model.User;
-import com.springpageable.utils.LdapGroup;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;

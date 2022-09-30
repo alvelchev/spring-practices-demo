@@ -4,7 +4,7 @@ import com.springpageable.dto.FutureDeviceDTO;
 import com.springpageable.dto.GetFutureDeviceResponseDTO;
 import com.springpageable.exception.ConflictException;
 import com.springpageable.exception.ResourceNotFoundException;
-import com.springpageable.mapper.FutureDeviceMapper;
+import com.springpageable.model.mapper.FutureDeviceMapper;
 import com.springpageable.repository.FutureDeviceRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

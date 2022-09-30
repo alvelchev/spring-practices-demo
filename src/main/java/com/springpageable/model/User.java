@@ -1,6 +1,6 @@
 package com.springpageable.model;
 
-import com.springpageable.utils.LdapGroup;
+import com.springpageable.enums.LdapGroup;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

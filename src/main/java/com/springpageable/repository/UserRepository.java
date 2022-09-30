@@ -1,8 +1,8 @@
 package com.springpageable.repository;
 
+import com.springpageable.enums.LdapGroup;
 import com.springpageable.model.User;
 import com.springpageable.repository.custom.UserRepositoryCriteria;
-import com.springpageable.utils.LdapGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,9 +1,9 @@
 package com.device;
 
+import com.springpageable.enums.LdapGroup;
 import com.springpageable.model.User;
 import com.springpageable.repository.custom.UserRepositoryCriteria;
 import com.springpageable.repository.custom.UserRepositoryCriteriaImpl;
-import com.springpageable.utils.LdapGroup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

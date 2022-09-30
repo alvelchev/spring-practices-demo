@@ -1,7 +1,7 @@
 package com.springpageable.dto;
 
+import com.springpageable.enums.HealthStatus;
 import com.springpageable.swagger.SwaggerHealthStatusDetailsDTO;
-import com.springpageable.utils.HealthStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
