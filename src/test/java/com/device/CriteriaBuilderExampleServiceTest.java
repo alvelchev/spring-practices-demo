@@ -1,11 +1,11 @@
 package com.device;
 
 import com.springpageable.dto.GetUserResponseDTO;
-import com.springpageable.mapper.UserMapperImpl;
+import com.springpageable.enums.LdapGroup;
 import com.springpageable.model.User;
+import com.springpageable.model.mapper.UserMapperImpl;
 import com.springpageable.repository.UserRepository;
 import com.springpageable.service.CriteriaBuilderExampleService;
-import com.springpageable.utils.LdapGroup;
 import ie.corballis.fixtures.annotation.Fixture;
 import ie.corballis.fixtures.annotation.FixtureAnnotations;
 import org.apache.logging.log4j.util.Strings;

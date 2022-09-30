@@ -1,4 +1,4 @@
-package com.springpageable.utils;
+package com.springpageable.enums;
 
 /**
  * Important! Don't change the ordering of the enum values since it will be a breaking change in the consuming services.

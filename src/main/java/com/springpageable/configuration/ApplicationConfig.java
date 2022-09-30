@@ -1,9 +1,9 @@
 package com.springpageable.configuration;
 
-import com.springpageable.mapper.FutureDeviceMapper;
-import com.springpageable.mapper.FutureDeviceMapperImpl;
-import com.springpageable.mapper.UserMapper;
-import com.springpageable.mapper.UserMapperImpl;
+import com.springpageable.model.mapper.FutureDeviceMapper;
+import com.springpageable.model.mapper.FutureDeviceMapperImpl;
+import com.springpageable.model.mapper.UserMapper;
+import com.springpageable.model.mapper.UserMapperImpl;
 import com.springpageable.storage.CountryStorage;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

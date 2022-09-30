@@ -1,4 +1,4 @@
-package com.springpageable.dto;
+package com.springpageable.swagger;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

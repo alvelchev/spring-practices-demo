@@ -1,10 +1,10 @@
 package com.springpageable.service;
 
 import com.springpageable.dto.GetUserResponseDTO;
-import com.springpageable.mapper.UserMapper;
+import com.springpageable.enums.LdapGroup;
 import com.springpageable.model.User;
+import com.springpageable.model.mapper.UserMapper;
 import com.springpageable.repository.UserRepository;
-import com.springpageable.utils.LdapGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

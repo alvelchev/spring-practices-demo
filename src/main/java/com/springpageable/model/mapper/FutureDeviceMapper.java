@@ -1,9 +1,9 @@
-package com.springpageable.mapper;
+package com.springpageable.model.mapper;
 
 import com.springpageable.dto.FutureDeviceDTO;
 import com.springpageable.dto.GetFutureDeviceResponseDTO;
+import com.springpageable.enums.HealthStatus;
 import com.springpageable.model.FutureDevice;
-import com.springpageable.utils.HealthStatus;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

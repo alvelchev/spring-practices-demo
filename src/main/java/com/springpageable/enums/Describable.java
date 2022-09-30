@@ -1,4 +1,4 @@
-package com.springpageable.utils;
+package com.springpageable.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
