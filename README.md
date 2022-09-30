@@ -6,6 +6,13 @@ Model view controller architecture, using mapstruct for objects mapping,flyway f
 Added integration with git hub actions for code analyzis (https://www.sonarsource.com/products/sonarcloud/)
 https://sonarcloud.io/project/overview?id=alvelchev_spring-pageable-response-demo
 
+# How to start the project
+ - 1.Clone the repo
+ - 2.Start local postgre sql
+ - 3.Maven clean install
+ - 4.Open swagger url to test the endpoints: http://localhost:8099/swagger-ui/index.html
+ 
+
 # Links for more info:
 - PageAble and sorting response: https://www.baeldung.com/spring-data-jpa-pagination-sorting
 - Flyway: https://www.baeldung.com/database-migrations-with-flyway
