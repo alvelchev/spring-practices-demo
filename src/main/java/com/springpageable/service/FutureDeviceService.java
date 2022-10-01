@@ -43,7 +43,10 @@ public class FutureDeviceService {
    */
   public Page<GetFutureDeviceResponseDTO> retrieveFutureDevices(
       Pageable p, String searchParameter) {
-    var futureDevices = futureDeviceRepository.findAll();
+    var futureDevices = futureDeviceRepository.findFutureDevices(p,searchParameter);
+    if (futureDevices.isEmpty()) {
+      return Page.empty();
+    }
     var devices =
         futureDevices.stream()
             .map(futureDeviceMapper::futureDeviceToFutureDeviceResponseDTO)

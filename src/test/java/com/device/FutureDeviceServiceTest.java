@@ -19,6 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -26,8 +27,7 @@ import java.util.Optional;
 
 import static com.device.mock.Constants.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -115,13 +115,13 @@ class FutureDeviceServiceTest {
   @Test
   void testThat_retrieveFutureDevices_returnsResult() throws BadRequestException {
     // Arrange
-    when(mockFutureDeviceRepository.findAll()).thenReturn(futureDeviceList);
-
+    when(mockFutureDeviceRepository.findFutureDevices(any(Pageable.class), anyString()))
+            .thenReturn(new PageImpl<>(futureDeviceList));
     // Act
     var actualResult = underTest.retrieveFutureDevices(mockPageable, TEST_SEARCH_PARAMETER).getContent();
 
     // Assert
-    verify(mockFutureDeviceRepository).findAll();
+    verify(mockFutureDeviceRepository).findFutureDevices(mockPageable, SEARCH_PARAMETER_KEY);
     assertEquals(getFutureDeviceResponseDtoList.get(0).getId(), actualResult.get(0).getId());
   }
 }

@@ -53,7 +53,7 @@ public class DeviceController {
       example = "gts",
       description = "Search by serial number, product id or customer name")
   public Page<GetFutureDeviceResponseDTO> retrieveFutureDevices(
-      @PageableDefault(direction = Sort.Direction.ASC, sort = "customer.name") Pageable p,
+      @PageableDefault(direction = Sort.Direction.ASC, sort = "customerId") Pageable p,
       @RequestParam(name = "searchParameter", required = false, defaultValue = "")
           String searchParameter) {
     return futureDeviceService.retrieveFutureDevices(p, searchParameter);
