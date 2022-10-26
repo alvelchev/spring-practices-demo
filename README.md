@@ -23,6 +23,7 @@ Added integration with GitHub actions for code analyzis
 - CriteriaBuilder: https://www.baeldung.com/spring-data-criteria-queries
 
 
+
 Example Pageable response:
 
 ```yaml
