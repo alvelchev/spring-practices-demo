@@ -1,7 +1,7 @@
 # Spring Boot Application, support data jpa and pageable and sorting result
 
 In this project is demonstrated main Java Spring concepts.
-Model view controller architecture, using mapstruct for objects mapping,flyway for database migration,JUNIT 5 configuration for test coverage,read and filter data from json file and return it like a response, basic CRUD operations.Also is demonstrated how to return a Pageable response which is easy to filter, sorting and etc.Created Global exception handler for handle exception from the codebase.Demo of how to use CriteBuilder for data retrieving.
+Model view controller architecture, using mapstruct for objects mapping,flyway for database migration,JUNIT 5 configuration for test coverage,read and filter data from json file and return it like a response, basic CRUD operations.Also is demonstrated how to return a Pageable response which is easy to filter, sorting and etc.Created Global exception handler for handle exception from the codebase and custom spring validator(example with annotation for field and class level).Demo of how to use CriteBuilder for data retrieving.
 
 Added integration with GitHub actions for code analyzis 
 - https://www.sonarsource.com/products/sonarcloud/
@@ -21,8 +21,7 @@ Added integration with GitHub actions for code analyzis
 - Global exception handler in JAVA: https://www.baeldung.com/java-global-exception-handler
 - Actuator: https://www.baeldung.com/spring-boot-actuators
 - CriteriaBuilder: https://www.baeldung.com/spring-data-criteria-queries
-
-
+- Custom validator: https://www.baeldung.com/spring-mvc-custom-validator
 
 Example Pageable response:
 
