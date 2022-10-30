@@ -1,4 +1,4 @@
-package com.device;
+package com.device.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -40,14 +40,12 @@ class FutureDeviceControllerTest {
 
   private ObjectMapper objectMapper;
 
-  @InjectMocks
-  private DeviceController underTest;
+  @InjectMocks private DeviceController underTest;
 
   @Fixture(FIXTURE_FUTURE_DEVICE_DTO)
   private FutureDeviceDTO futureDeviceDTO;
 
-  @Mock
-  private FutureDeviceService mockFutureDeviceService;
+  @Mock private FutureDeviceService mockFutureDeviceService;
 
   @BeforeEach
   void setUp() throws Exception {
@@ -66,10 +64,13 @@ class FutureDeviceControllerTest {
     // Arrange
     var expectedResult = List.of(new GetFutureDeviceResponseDTO());
     when(mockFutureDeviceService.retrieveFutureDevices(any(Pageable.class), anyString()))
-            .thenReturn(new PageImpl<>(expectedResult));
+        .thenReturn(new PageImpl<>(expectedResult));
 
     // Act
-    var mvcResult = mockMvc.perform(get(API_VERSION_1 + PATH_FUTURE_DEVICES)
+    var mvcResult =
+        mockMvc
+            .perform(
+                get(API_VERSION_1 + PATH_FUTURE_DEVICES)
                     .param(SEARCH_PARAMETER_KEY, TEST_SERIAL_NUMBER)
                     .contentType(APPLICATION_JSON)
                     .accept(APPLICATION_JSON))
@@ -77,29 +78,36 @@ class FutureDeviceControllerTest {
             .andReturn();
 
     var actualResult = objectMapper.readTree(mvcResult.getResponse().getContentAsString());
-    var actualContent = objectMapper.readValue(actualResult.get(CONTENT_KEY).toString(),
+    var actualContent =
+        objectMapper.readValue(
+            actualResult.get(CONTENT_KEY).toString(),
             new TypeReference<List<GetFutureDeviceResponseDTO>>() {});
 
     // Assert
     assertEquals(expectedResult, actualContent);
-    verify(mockFutureDeviceService).retrieveFutureDevices(any(Pageable.class), eq(TEST_SERIAL_NUMBER));
+    verify(mockFutureDeviceService)
+        .retrieveFutureDevices(any(Pageable.class), eq(TEST_SERIAL_NUMBER));
   }
 
   @Test
   void testThat_createDeviceFutureCatalog_invokesFutureDeviceService() throws Exception {
     // Act
-    mockMvc.perform(post(API_VERSION_1 + PATH_FUTURE_DEVICES)
-                    .content(objectMapper.writeValueAsString(futureDeviceDTO))
-                    .contentType(APPLICATION_JSON))
-            .andExpect(status().isCreated());
+    mockMvc
+        .perform(
+            post(API_VERSION_1 + PATH_FUTURE_DEVICES)
+                .content(objectMapper.writeValueAsString(futureDeviceDTO))
+                .contentType(APPLICATION_JSON))
+        .andExpect(status().isCreated());
   }
 
   @Test
   void testThat_deleteFutureDevice_returnsStatusOk() throws Exception {
-    //Act
-    mockMvc.perform(delete(API_VERSION_1 + PATH_REMOVE_FUTURE_DEVICE, TEST_CUSTOMER_ID)
-                    .contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk());
+    // Act
+    mockMvc
+        .perform(
+            delete(API_VERSION_1 + PATH_REMOVE_FUTURE_DEVICE, TEST_CUSTOMER_ID)
+                .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk());
 
     // Assert
     verify(mockFutureDeviceService).deleteFutureDevice(anyLong());
