@@ -14,7 +14,7 @@ Added integration with GitHub actions for code analyzis
  - 4.Open swagger url to test the endpoints: http://localhost:8099/swagger-ui/index.html
  
 
-# Links for more info:
+# Provided examples with implementation on SpringBoot.Links for more info:
 - PageAble and sorting response: https://www.baeldung.com/spring-data-jpa-pagination-sorting
 - Flyway: https://www.baeldung.com/database-migrations-with-flyway
 - JUNIT5: https://www.baeldung.com/junit-5
