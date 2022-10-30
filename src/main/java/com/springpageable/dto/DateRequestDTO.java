@@ -1,5 +1,9 @@
 package com.springpageable.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.springpageable.validator.CompareDateClassAnnotation;
 import com.springpageable.validator.DateFieldAnnotation;
 import lombok.AllArgsConstructor;
@@ -18,9 +22,13 @@ import java.time.LocalDate;
 @Valid
 public class DateRequestDTO {
   @NotNull
+  @JsonSerialize(using = LocalDateSerializer.class)
+  @JsonDeserialize(using = LocalDateDeserializer.class)
   private LocalDate fromDate;
 
   @Future
   @DateFieldAnnotation
+  @JsonSerialize(using = LocalDateSerializer.class)
+  @JsonDeserialize(using = LocalDateDeserializer.class)
   private LocalDate toDate;
 }
