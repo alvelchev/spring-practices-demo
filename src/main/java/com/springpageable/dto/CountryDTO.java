@@ -9,7 +9,7 @@ import java.util.Comparator;
 public class CountryDTO implements Comparable<CountryDTO> {
 
   @Schema(example = "Bulgaria")
-  private String name;
+  private String  name;
 
   @Schema(example = "BG")
   private String countryCode;

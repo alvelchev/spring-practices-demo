@@ -1,4 +1,4 @@
-package com.device;
+package com.device.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,49 +37,53 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(MockitoExtension.class)
 class CriteriaBuilderExampleControllerTest {
 
-    private MockMvc mockMvc;
+  private MockMvc mockMvc;
 
-    private ObjectMapper objectMapper;
+  private ObjectMapper objectMapper;
 
-    @InjectMocks
-    private CriteriaBuilderExampleController underTest;
+  @InjectMocks private CriteriaBuilderExampleController underTest;
 
-    @Mock
-    private CriteriaBuilderExampleService mockUserService;
+  @Mock private CriteriaBuilderExampleService mockUserService;
 
-    @Fixture(LIST_OF_GET_USER_RESPONSE_DTO)
-    private List<GetUserResponseDTO> getUserResponseDTOs;
+  @Fixture(LIST_OF_GET_USER_RESPONSE_DTO)
+  private List<GetUserResponseDTO> getUserResponseDTOs;
 
-    @BeforeEach
-    void setUp() throws Exception {
-        FixtureAnnotations.initFixtures(this);
+  @BeforeEach
+  void setUp() throws Exception {
+    FixtureAnnotations.initFixtures(this);
 
-        mockMvc = MockMvcBuilders.standaloneSetup(underTest)
-                .setControllerAdvice(new GlobalExceptionHandler())
-                .setCustomArgumentResolvers(new PageableHandlerMethodArgumentResolver())
-                .build();
+    mockMvc =
+        MockMvcBuilders.standaloneSetup(underTest)
+            .setControllerAdvice(new GlobalExceptionHandler())
+            .setCustomArgumentResolvers(new PageableHandlerMethodArgumentResolver())
+            .build();
 
-        objectMapper = new ObjectMapper();
-    }
+    objectMapper = new ObjectMapper();
+  }
 
-    @Test
-    void testThat_getUsers_returnsResult() throws Exception {
-        // Arrange
-        when(mockUserService.getUsers(anyList(), or(isNull(), anyList()), anyList(), anyString(), any(Pageable.class)))
-                .thenReturn(new PageImpl<>(getUserResponseDTOs));
+  @Test
+  void testThat_getUsers_returnsResult() throws Exception {
+    // Arrange
+    when(mockUserService.getUsers(
+            anyList(), or(isNull(), anyList()), anyList(), anyString(), any(Pageable.class)))
+        .thenReturn(new PageImpl<>(getUserResponseDTOs));
 
-        // Act
-        var mvcResult = mockMvc.perform(get(WebPath.API_VERSION_1 + WebPath.PATH_USERS)
-                        .contentType(APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andReturn();
+    // Act
+    var mvcResult =
+        mockMvc
+            .perform(get(WebPath.API_VERSION_1 + WebPath.PATH_USERS).contentType(APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andReturn();
 
-        // Assert
-        verify(mockUserService).getUsers(anyList(), or(isNull(), anyList()), anyList(), anyString(), any(Pageable.class));
-        var actualResult = objectMapper.readTree(mvcResult.getResponse().getContentAsString());
-        var actualContent = objectMapper.readValue(actualResult.get(TEST_CONTENT).toString(),
-                new TypeReference<List<GetUserResponseDTO>>() {});
+    // Assert
+    verify(mockUserService)
+        .getUsers(anyList(), or(isNull(), anyList()), anyList(), anyString(), any(Pageable.class));
+    var actualResult = objectMapper.readTree(mvcResult.getResponse().getContentAsString());
+    var actualContent =
+        objectMapper.readValue(
+            actualResult.get(TEST_CONTENT).toString(),
+            new TypeReference<List<GetUserResponseDTO>>() {});
 
-        assertEquals(getUserResponseDTOs, actualContent);
-    }
+    assertEquals(getUserResponseDTOs, actualContent);
+  }
 }
