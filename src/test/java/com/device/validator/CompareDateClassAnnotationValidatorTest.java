@@ -1,6 +1,7 @@
-package com.springpageable.validator;
+package com.device.validator;
 
 import com.springpageable.dto.DateRequestDTO;
+import com.springpageable.validator.CompareDateClassAnnotationValidator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
