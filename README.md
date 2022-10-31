@@ -1,3 +1,4 @@
+# Java Standarts
 ![Spring](https://github.com/alvelchev/spring-practices-demo/actions/workflows/build.yml/badge.svg)
 [![codecov](https://codecov.io/gh/alvelchev/spring-practices-demo/branch/main/graph/badge.svg)](https://codecov.io/gh/alvelchev/spring-practices-demo)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
