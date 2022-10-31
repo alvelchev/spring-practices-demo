@@ -7,9 +7,11 @@
 In this project is demonstrated main Java Spring concepts.
 Model view controller architecture, using mapstruct for objects mapping,flyway for database migration,JUNIT 5 configuration for test coverage,read and filter data from json file and return it like a response, basic CRUD operations.Also is demonstrated how to return a Pageable response which is easy to filter, sorting and etc.Created Global exception handler for handle exception from the codebase and custom spring validator(example with annotation for field and class level).Demo of how to use CriteBuilder for data retrieving.
 
-Added integration with GitHub actions for code analyzis 
+Added integration with GitHub actions for code analyzis with sonarcloud and codecov for code coverage
 - https://www.sonarsource.com/products/sonarcloud/
 - https://sonarcloud.io/project/overview?id=alvelchev_spring-pageable-response-demo
+- https://github.com/codecov/example-java-maven (example how to set-up codecov badge)
+- https://app.codecov.io/gh/alvelchev/spring-practices-demo
 
 # How to start the project
  - 1.Clone the repo
