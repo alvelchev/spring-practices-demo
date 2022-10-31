@@ -140,4 +140,18 @@ class FutureDeviceServiceTest {
     verify(mockFutureDeviceRepository).findFutureDevices(mockPageable, SEARCH_PARAMETER_KEY);
     assertEquals(getFutureDeviceResponseDtoList.get(0).getId(), actualResult.get(0).getId());
   }
+
+  @Test
+  void testThat_retrieveFutureDevices_whenNoResultFound() throws BadRequestException {
+    // Arrange
+    when(mockFutureDeviceRepository.findFutureDevices(any(Pageable.class), anyString()))
+            .thenReturn(new PageImpl<>(List.of()));
+
+    //Act
+    var actualResult = underTest.retrieveFutureDevices(mockPageable, SEARCH_PARAMETER_KEY).getContent();
+
+    // Assert
+    assertNotNull(actualResult);
+    assertTrue(actualResult.isEmpty());
+  }
 }
