@@ -7,7 +7,7 @@
 
 
 In this project is demonstrated main Java Spring concepts.
-Model view controller architecture, using <b>mapstruct</b> for objects mapping,<b>flyway</b> for database migration,<b>JUNIT</b> 5 configuration for test coverage,read and filter data from json file and return it like a response, basic <b>CRUD operations</b>.Also is demonstrated how to return a <b>Pageable response</b> which is easy to filter, sorting and etc.Created <b>Global exception handler</b> for handle exception from the codebase and custom spring validator(example with annotation for field and class level).Demo of how to use CriteBuilder for data retrieving.
+Model view controller architecture, using <b>mapstruct</b> for objects mapping,<b>flyway</b> for database migration,<b>JUNIT</b> 5 configuration for test coverage,read and filter data from json file and return it like a response, basic <b>CRUD operations</b>.Also is demonstrated how to return a <b>Pageable response</b> which is easy to filter, sorting and etc.Created <b>Global exception handler</b> for handle exception from the codebase and custom spring validator(example with annotation for field and class level).Demo of how to use CriteBuilder for data retrieving.Added configuration for collecting application metrics via Spring Boot Actuator and configuration for Injecting Git Information Into Spring
 
 Added integration with GitHub actions for code analyzis with sonarcloud and codecov for code coverage
 - https://www.sonarsource.com/products/sonarcloud/
@@ -30,3 +30,5 @@ Added integration with GitHub actions for code analyzis with sonarcloud and code
 - Actuator: https://www.baeldung.com/spring-boot-actuators
 - CriteriaBuilder: https://www.baeldung.com/spring-data-criteria-queries
 - Custom validator: https://www.baeldung.com/spring-mvc-custom-validator
+- Spring Boot Actuator: https://www.baeldung.com/spring-boot-actuators
+- Injecting Git Information Into Spring: https://www.baeldung.com/spring-git-information
