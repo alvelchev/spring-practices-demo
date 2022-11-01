@@ -20,6 +20,7 @@ Added integration with GitHub actions for code analyzis with sonarcloud and code
  - 2.Start local postgre sql
  - 3.Maven clean install
  - 4.Open swagger url to test the endpoints: http://localhost:8099/swagger-ui/index.html
+ - 5.Open Spring Boot Actuator endpoint: http://localhost:8099/actuator/
  
 
 # Provided examples with implementation on SpringBoot.Links for more info:
