@@ -30,3 +30,26 @@ Added integration with GitHub actions for code analyzis with sonarcloud and code
 - Actuator: https://www.baeldung.com/spring-boot-actuators
 - CriteriaBuilder: https://www.baeldung.com/spring-data-criteria-queries
 - Custom validator: https://www.baeldung.com/spring-mvc-custom-validator
+
+
+Git commit plugin response:
+```yaml
+// 20221101205507
+// http://localhost:8099/actuator/info
+
+{
+  "git": {
+    "branch": "main",
+    "commit": {
+      "id": "ad29ce5",
+      "time": "2022-11-01T07:55:12Z"
+    }
+  },
+  "build": {
+    "artifact": "springpageable",
+    "name": "springpageable",
+    "time": "2022-11-01T18:52:47.253Z",
+    "version": "0.0.1",
+    "group": "com.springpageable"
+  }
+}

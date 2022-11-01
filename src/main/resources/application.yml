@@ -67,7 +67,7 @@ management:
         include: "health,info,metrics,env"
     web:
       exposure:
-        include: "health"
+        include: "health,info"
   endpoint:
     info:
       enabled: true
