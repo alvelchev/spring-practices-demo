@@ -59,6 +59,10 @@ logging:
 
 # Actuator configurations
 management:
+  info:
+    git:
+      enabled: true
+      mode: full
   endpoints:
     # disable all, then enable only the needed ones
     enabled-by-default: false
