@@ -33,3 +33,37 @@ Added integration with GitHub actions for code analyzis with sonarcloud and code
 - Custom validator: https://www.baeldung.com/spring-mvc-custom-validator
 - Spring Boot Actuator: https://www.baeldung.com/spring-boot-actuators
 - Injecting Git Information Into Spring: https://www.baeldung.com/spring-git-information
+
+
+Git commit plugin response:
+```yaml
+// 20221101225521
+// http://localhost:8099/actuator/info
+
+{
+  "git": {
+    "commit": {
+      "message": {
+        "short": "Merge branch 'main' into gitCommitPlugin"
+      },
+      "id": {
+        "abbrev": "34078b6",
+        "full": "34078b613c32ac9cf4f076b42232e3d9523aaeb7",
+        "describe": "34078b6-dirty"
+      },
+      "time": "2022-11-01T18:59:21Z"
+    },
+    "branch": "gitCommitPlugin",
+    "build": {
+      "time": "2022-11-01T20:53:58Z",
+      "version": "0.0.1"
+    }
+  },
+  "build": {
+    "artifact": "springpageable",
+    "name": "springpageable",
+    "time": "2022-11-01T20:53:56.838Z",
+    "version": "0.0.1",
+    "group": "com.springpageable"
+  }
+}
