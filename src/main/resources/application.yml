@@ -59,6 +59,10 @@ logging:
 
 # Actuator configurations
 management:
+  info:
+    git:
+      enabled: true
+      mode: full
   endpoints:
     # disable all, then enable only the needed ones
     enabled-by-default: false
@@ -67,7 +71,7 @@ management:
         include: "health,info,metrics,env"
     web:
       exposure:
-        include: "health"
+        include: "health,info"
   endpoint:
     info:
       enabled: true
