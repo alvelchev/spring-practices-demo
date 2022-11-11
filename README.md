@@ -36,6 +36,7 @@ Added integration with GitHub actions for code analyzis with sonarcloud and code
 
 
 Git commit plugin response:
+
 ```yaml
 // 20221101225521
 // http://localhost:8099/actuator/info
