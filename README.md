@@ -7,8 +7,6 @@
 
 # Spring Boot Practices Application
 
-# Spring Boot Application, support data jpa and pageable and sorting result
-
 In this project is demonstrated main Java Spring concepts.
 Model view controller architecture, using <b>mapstruct</b> for objects mapping,<b>flyway</b> for database migration,<b>
 JUNIT</b> 5 configuration for test coverage,read and filter data from json file and return it like a response, basic <b>

@@ -19,6 +19,7 @@ public class HistoryLinkProvidingGitInfoContributor extends GitInfoContributor {
     super(properties);
   }
 
+  @Override
   protected void postProcessContent(Map<String, Object> content) {
     super.postProcessContent(content);
 
