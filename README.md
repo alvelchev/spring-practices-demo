@@ -5,6 +5,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
+# Spring Boot Practices Application
+
 # Spring Boot Application, support data jpa and pageable and sorting result
 
 In this project is demonstrated main Java Spring concepts.
