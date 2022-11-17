@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class OperationUtils {
+public final class OperationUtils {
 
   static List<String> partNumber = Arrays.asList("testRoot1", "testRoot2", "testRoot3");
-  static List<String> filteredPartNumber = Arrays.asList("testRoot1");
 
+  private OperationUtils() {}
   /**
    * Find and filter equals records from two lists
    *
@@ -22,10 +22,5 @@ public class OperationUtils {
                 filteredPartNumber.stream()
                     .anyMatch(countryCode -> countryCode.equalsIgnoreCase(country)))
         .collect(Collectors.toList());
-  }
-
-  public static void main(String[] args) {
-    var result = getEqualRecordsFromTwoLists(filteredPartNumber);
-    System.out.println(result.toString());
   }
 }
