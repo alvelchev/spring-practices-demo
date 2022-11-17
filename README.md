@@ -1,30 +1,37 @@
 # Java Standarts
+
 ![Spring](https://github.com/alvelchev/spring-practices-demo/actions/workflows/build.yml/badge.svg)
 [![codecov](https://codecov.io/gh/alvelchev/spring-practices-demo/branch/main/graph/badge.svg)](https://codecov.io/gh/alvelchev/spring-practices-demo)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+
 # Spring Boot Practices Application
 
-
-
 In this project is demonstrated main Java Spring concepts.
-Model view controller architecture, using <b>mapstruct</b> for objects mapping,<b>flyway</b> for database migration,<b>JUNIT</b> 5 configuration for test coverage,read and filter data from json file and return it like a response, basic <b>CRUD operations</b>.Also is demonstrated how to return a <b>Pageable response</b> which is easy to filter, sorting and etc.Created <b>Global exception handler</b> for handle exception from the codebase and custom spring validator(example with annotation for field and class level).Demo of how to use CriteBuilder for data retrieving.Added configuration for collecting application metrics via Spring Boot Actuator and configuration for Injecting Git Information Into Spring
+Model view controller architecture, using <b>mapstruct</b> for objects mapping,<b>flyway</b> for database migration,<b>
+JUNIT</b> 5 configuration for test coverage,read and filter data from json file and return it like a response, basic <b>
+CRUD operations</b>.Also is demonstrated how to return a <b>Pageable response</b> which is easy to filter, sorting and
+etc.Created <b>Global exception handler</b> for handle exception from the codebase and custom spring validator(example
+with annotation for field and class level).Demo of how to use CriteBuilder for data retrieving.Added configuration for
+collecting application metrics via Spring Boot Actuator and configuration for Injecting Git Information Into Spring
 
 Added integration with GitHub actions for code analyzis with sonarcloud and codecov for code coverage
+
 - https://www.sonarsource.com/products/sonarcloud/
 - https://sonarcloud.io/project/overview?id=alvelchev_spring-pageable-response-demo
 - https://github.com/codecov/example-java-maven (example how to set-up codecov badge)
 - https://app.codecov.io/gh/alvelchev/spring-practices-demo
 
 # How to start the project
- - 1.Clone the repo
- - 2.Start local postgre sql
- - 3.Maven clean install
- - 4.Open swagger url to test the endpoints: http://localhost:8099/swagger-ui/index.html
- - 5.Open Spring Boot Actuator endpoint: http://localhost:8099/actuator/
- 
+
+- 1.Clone the repo
+- 2.Start local postgre sql
+- 3.Maven clean install
+- 4.Open swagger url to test the endpoints: http://localhost:8099/swagger-ui/index.html
+- 5.Open Spring Boot Actuator endpoint: http://localhost:8099/actuator/
 
 # Provided examples with implementation on SpringBoot.Links for more info:
+
 - PageAble and sorting response: https://www.baeldung.com/spring-data-jpa-pagination-sorting
 - Flyway: https://www.baeldung.com/database-migrations-with-flyway
 - JUNIT5: https://www.baeldung.com/junit-5
@@ -34,7 +41,6 @@ Added integration with GitHub actions for code analyzis with sonarcloud and code
 - Custom validator: https://www.baeldung.com/spring-mvc-custom-validator
 - Spring Boot Actuator: https://www.baeldung.com/spring-boot-actuators
 - Injecting Git Information Into Spring: https://www.baeldung.com/spring-git-information
-
 
 Git commit plugin response:
 
@@ -53,7 +59,8 @@ Git commit plugin response:
         "full": "34078b613c32ac9cf4f076b42232e3d9523aaeb7",
         "describe": "34078b6-dirty"
       },
-      "time": "2022-11-01T18:59:21Z"
+      "time": "2022-11-01T18:59:21Z",
+      "history": "https://github.com/alvelchev/spring-practices-demo/commit/4b36876"
     },
     "branch": "gitCommitPlugin",
     "build": {
