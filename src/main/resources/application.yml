@@ -83,3 +83,6 @@ management:
       enabled: true
   # Profiling configuration
   profiles.active: local
+
+git:
+  url: "https://github.com/alvelchev/spring-practices-demo/commit/"
