@@ -20,7 +20,6 @@ import static com.springpageable.configuration.WebPath.PATH_DATE;
 @RequestMapping(API_VERSION_1)
 @Validated
 @Tag(name = "Date validator", description = "Show custom date validator in spring")
-@Slf4j
 public class DateController {
 
   private final DateService dateService;

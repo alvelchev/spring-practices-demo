@@ -4,14 +4,12 @@ import com.springpageable.dto.CountryDTO;
 import com.springpageable.enums.RegionType;
 import com.springpageable.exception.BadRequestException;
 import com.springpageable.storage.CountryStorage;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-@Slf4j
 public class ReadingJsonService {
 
   private final CountryStorage countryStorage;
