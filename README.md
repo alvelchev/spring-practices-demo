@@ -1,6 +1,7 @@
 # Java Standarts
 
 ![Spring](https://github.com/alvelchev/spring-practices-demo/actions/workflows/build.yml/badge.svg)
+[![Docker Image CI](https://github.com/alvelchev/spring-practices-demo/actions/workflows/docker-image.yml/badge.svg)](https://github.com/alvelchev/spring-practices-demo/actions/workflows/docker-image.yml)
 [![codecov](https://codecov.io/gh/alvelchev/spring-practices-demo/branch/main/graph/badge.svg)](https://codecov.io/gh/alvelchev/spring-practices-demo)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 </br>
@@ -19,6 +20,7 @@ with annotation for field and class level).Demo of how to use CriteBuilder for d
 collecting application metrics via Spring Boot Actuator and configuration for Injecting Git Information Into Spring
 
 Added integration with GitHub actions for code analyzis with sonarcloud and codecov for code coverage
+Added integration with docker.On every push event to main branch this action generates a new docker image
 
 - https://www.sonarsource.com/products/sonarcloud/
 - https://sonarcloud.io/project/overview?id=alvelchev_spring-pageable-response-demo
