@@ -16,12 +16,12 @@ Model view controller architecture, using <b>mapstruct</b> for objects mapping,<
 JUNIT</b> 5 configuration for test coverage,read and filter data from json file and return it like a response, basic <b>
 CRUD operations</b>.Also is demonstrated how to return a <b>Pageable response</b> which is easy to filter, sorting and
 etc.Created <b>Global exception handler</b> for handle exception from the codebase and custom spring validator(example
-with annotation for field and class level).Demo of how to use CriteBuilder for data retrieving.Added configuration for
+with annotation for field and class level).Demo of how to use CriteriaBuilder for data retrieving.Added configuration for
 collecting application metrics via Spring Boot Actuator and configuration for Injecting Git Information Into Spring.
 
 # GitHub actions pipelines integration
 Added integration with GitHub actions for code analyzis with sonarcloud and codecov for code coverage report               
-Added integration with Docker.On every push event to main branch this action generates a new docker image
+Added integration with Docker.On every push event to main branch this action generates a new docker image with the relevant image tag.
 
 - https://www.sonarsource.com/products/sonarcloud/
 - https://sonarcloud.io/project/overview?id=alvelchev_spring-pageable-response-demo
