@@ -61,7 +61,7 @@ class CriteriaBuilderExampleServiceTest {
     // Assert
     verify(mockUserRepository)
         .getUsers(List.of(), List.of(TEST_422_USERNAME), List.of(), Strings.EMPTY, mockPageable);
-    verify(mockUserRepository, never()).findAll(any(Pageable.class));
+    verify(mockUserRepository, never()).findAll();
     assertEquals(expectedResult, actualResult.getContent());
   }
 

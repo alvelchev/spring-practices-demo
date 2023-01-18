@@ -3,10 +3,10 @@ package com.springpageable.repository;
 import com.springpageable.model.FutureDevice;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 
-public interface FutureDeviceRepository extends JpaRepository<FutureDevice, Long> {
+public interface FutureDeviceRepository extends CrudRepository<FutureDevice, Long> {
 
   @Query(
       "SELECT fd FROM FutureDevice fd"
