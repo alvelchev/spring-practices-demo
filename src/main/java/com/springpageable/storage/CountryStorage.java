@@ -38,16 +38,10 @@ public class CountryStorage {
 
     countries = Collections.unmodifiableSortedSet(countryDTOS);
 
-    try {
       countryDTOS =
           mapper.readValue(
               CountryStorage.class.getResource(COUNTRIES_CE_RELATIVE_PATH),
               new TypeReference<>() {});
-
-    } catch (IOException e) {
-      log.error("Failed to load CE region countries. {}", e.getMessage(), e);
-      countryDTOS = new TreeSet<>();
-    }
 
     ceRegionCountries = Collections.unmodifiableSortedSet(countryDTOS);
 
