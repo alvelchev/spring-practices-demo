@@ -1,7 +1,7 @@
 package com.springpageable.validator;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.time.LocalDate;
 
 public class DateFieldValidator implements ConstraintValidator<DateFieldAnnotation, LocalDate> {
