@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "firstName": "John",
+      "lastName": "Snow",
+      "username": "snowjous",
+      "email": "john.snow@bbraun.com",
+      "internal": true
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Marley",
+      "username": "marlbojm",
+      "email": "bob.marley@bbraun.com",
+      "internal": true
+    },
+    {
+      "firstName": "Georgi",
+      "lastName": "Asparuhov",
+      "username": "aspagebg",
+      "email": "georgi.asparuhov@bbraun.com",
+      "internal": true
+    }
+  ]
+}
