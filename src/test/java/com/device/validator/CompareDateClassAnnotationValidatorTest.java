@@ -2,13 +2,13 @@ package com.device.validator;
 
 import com.springpageable.dto.DateRequestDTO;
 import com.springpageable.validator.CompareDateClassAnnotationValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import javax.validation.ConstraintValidatorContext;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

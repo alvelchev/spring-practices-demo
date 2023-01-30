@@ -3,13 +3,13 @@ package com.springpageable.repository;
 import com.springpageable.enums.LdapGroup;
 import com.springpageable.model.User;
 import com.springpageable.repository.custom.UserRepositoryCriteria;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Long>, UserRepositoryCriteria {
+public interface UserRepository extends CrudRepository<User, Long>, UserRepositoryCriteria {
 
     @Query("SELECT DISTINCT u FROM User u JOIN u.ldapGroups lg"
            + " WHERE lg in (:groups)"

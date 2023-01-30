@@ -29,42 +29,26 @@ public class CountryStorage {
           .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
           .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
-  public CountryStorage() {
+  public CountryStorage() throws IOException {
     TreeSet<CountryDTO> countryDTOS;
 
-    try {
       countryDTOS =
           mapper.readValue(
               CountryStorage.class.getResource(COUNTRIES_RELATIVE_PATH), new TypeReference<>() {});
-    } catch (IOException e) {
-      log.error("Failed to load countries. {}", e.getMessage(), e);
-      countryDTOS = new TreeSet<>();
-    }
+
     countries = Collections.unmodifiableSortedSet(countryDTOS);
 
-    try {
       countryDTOS =
           mapper.readValue(
               CountryStorage.class.getResource(COUNTRIES_CE_RELATIVE_PATH),
               new TypeReference<>() {});
 
-    } catch (IOException e) {
-      log.error("Failed to load CE region countries. {}", e.getMessage(), e);
-      countryDTOS = new TreeSet<>();
-    }
-
     ceRegionCountries = Collections.unmodifiableSortedSet(countryDTOS);
 
-    try {
       countryDTOS =
           mapper.readValue(
               CountryStorage.class.getResource(COUNTRIES_FRENCH_OVERSEAS_RELATIVE_PATH),
               new TypeReference<>() {});
-
-    } catch (IOException e) {
-      log.error("Failed to load French overseas region countries. {}", e.getMessage(), e);
-      countryDTOS = new TreeSet<>();
-    }
 
     frenchOverseasCountries = Collections.unmodifiableSortedSet(countryDTOS);
   }
