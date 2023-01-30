@@ -2,8 +2,8 @@ package com.springpageable.validator;
 
 import com.springpageable.dto.DateRequestDTO;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class CompareDateClassAnnotationValidator
     implements ConstraintValidator<CompareDateClassAnnotation, DateRequestDTO> {

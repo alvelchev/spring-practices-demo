@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import static com.springpageable.configuration.WebPath.API_VERSION_1;
 import static com.springpageable.configuration.WebPath.PATH_DATE;
