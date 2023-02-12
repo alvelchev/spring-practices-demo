@@ -16,6 +16,10 @@ spring:
   # Hibernate configuration
   jpa:
     properties:
+      jakarta:
+        persistence:
+          sharedCache:
+            mode: ENABLE_SELECTIVE
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         default_schema: dts
