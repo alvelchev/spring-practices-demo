@@ -28,6 +28,7 @@ public abstract class Auditable {
   @JsonDeserialize(using = LocalDateTimeMsDeserializer.class)
   protected LocalDateTime createdAt;
 
+
   @CreatedBy
   @Column(updatable = false)
   protected String createdBy;
