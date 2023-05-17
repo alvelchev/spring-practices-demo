@@ -4,8 +4,8 @@ spring:
   datasource:
     #    url: jdbc:postgresql://dbpostgresql:5432/
     #    username: postgres
-    url: jdbc:postgresql://localhost:5432/
-    username: iomt-connector
-    password: kla4st#en
+    url: jdbc:postgresql://localhost:5434/
+    username: postgres
+    password: 123
   # Flyway configuration
   flyway.locations: classpath:db/local_migrations
