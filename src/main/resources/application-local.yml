@@ -2,10 +2,8 @@
 spring:
   # Database configurations
   datasource:
-    #    url: jdbc:postgresql://dbpostgresql:5432/
-    #    username: postgres
-    url: jdbc:postgresql://localhost:5434/
+    url: jdbc:postgresql://localhost:5432/
     username: postgres
-    password: 123
+    password: kla4st#en
   # Flyway configuration
   flyway.locations: classpath:db/local_migrations
