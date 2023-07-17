@@ -128,6 +128,20 @@ class FutureDeviceServiceTest {
   }
 
   @Test
+  void testThat_createFutureDevice_passed_successfully() {
+    // Arrange
+    when(mockUserRepository.findById(anyLong())).thenReturn(Optional.of(users.get(0)));
+    when(mockFutureDeviceRepository.save(any(FutureDevice.class)))
+        .thenReturn(futureDeviceList.get(0));
+
+    // Act
+    underTest.createFutureDevice(futureDeviceDTO);
+
+    // Assert
+    verify(mockFutureDeviceRepository).save(any());
+  }
+
+  @Test
   void testThat_retrieveFutureDevices_returnsResult() throws BadRequestException {
     // Arrange
     when(mockFutureDeviceRepository.findFutureDevices(any(Pageable.class), anyString()))
