@@ -1,3 +1,2 @@
-codecov:
-    exclude:
-        - 'src/main/java/com/springpageable/DeviceApplication.java'
+ignore:
+    - '^com/springpageable/DeviceApplication.java.*'
