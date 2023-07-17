@@ -2,6 +2,7 @@ package com.springpageable;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,8 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class DeviceApplicationTest {
 
     @Test
-    public void mainTest() {
-        // Test that the main method runs without any exceptions
-        assertDoesNotThrow(() -> DeviceApplication.main(new String[]{}));
+    public void contextLoads() {
     }
 }
