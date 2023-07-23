@@ -1,0 +1,2 @@
+ignore:
+    - '^com/springpageable/DeviceApplication.java.*'

@@ -22,7 +22,7 @@ public class HistoryLinkProvidingGitInfoContributor extends GitInfoContributor {
   }
 
   @Override
-  protected void postProcessContent(Map<String, Object> content) {
+  public void postProcessContent(Map<String, Object> content) {
     super.postProcessContent(content);
 
     final String commitId = getProperties().getShortCommitId();
