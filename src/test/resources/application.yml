@@ -32,6 +32,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/
     username: iomt-connector
     password: kla4st#en
+    hikari:
+      schema: dts
   banner:
     location: classpath:/logo/logo.txt
 # Swagger-UI configurations

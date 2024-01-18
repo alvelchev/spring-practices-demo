@@ -16,6 +16,12 @@
         <sonar.organization>alvelchev</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <java.version>17</java.version>
+        <sonar.coverage.exclusions>
+            src/main/java/com/springpageable/configuration/quartz/QuartzConfig.java,
+            src/main/java/com/springpageable/configuration/quartz/QuartzJob.java,
+            src/main/java/com/springpageable/configuration/quartz/QuartzConfiguration.java,
+            src/main/java/com/springpageable/DeviceApplication.java
+        </sonar.coverage.exclusions>
         <coverage.exclusions>
             **/advice/**,
             **/annotation/**,

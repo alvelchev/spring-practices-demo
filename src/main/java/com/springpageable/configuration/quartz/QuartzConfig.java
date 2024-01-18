@@ -44,8 +44,7 @@ public class QuartzConfig {
         factoryBean.setDurability(true);
         factoryBean.setGroup(QUARTZ_GROUP_NAME);
         factoryBean.setName(QUARTZ_JOB_NAME);
-        factoryBean.setDescription(
-                "This job retrieves all workshops for given tenant with auto plan toggle enabled and send request to Planning to create autoplans");
+        factoryBean.setDescription("Some description");
         factoryBean.afterPropertiesSet();
         return factoryBean.getObject();
     }
