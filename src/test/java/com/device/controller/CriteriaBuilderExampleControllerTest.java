@@ -16,6 +16,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.test.web.servlet.MockMvc;
@@ -66,7 +67,7 @@ class CriteriaBuilderExampleControllerTest {
     // Arrange
     when(mockUserService.getUsers(
             anyList(), or(isNull(), anyList()), anyList(), anyString(), any(Pageable.class)))
-        .thenReturn(new PageImpl<>(getUserResponseDTOs));
+        .thenReturn(new PageImpl<>(getUserResponseDTOs, PageRequest.of(0, 10), getUserResponseDTOs.size()));
 
     // Act
     var mvcResult =
