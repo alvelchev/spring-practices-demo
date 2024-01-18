@@ -1,4 +1,4 @@
-package com.springpageable.configuration.autoplan;
+package com.springpageable.configuration.quartz;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
-public class QuartzAutoPlanJob implements Job {
-    private static final Logger logger = LoggerFactory.getLogger(QuartzAutoPlanJob.class);
+public class QuartzJob implements Job {
+    private static final Logger logger = LoggerFactory.getLogger(QuartzJob.class);
 
     @Override
     public void execute(JobExecutionContext context) {

@@ -1,4 +1,4 @@
-package com.springpageable.configuration.autoplan;
+package com.springpageable.configuration.quartz;
 
 import org.quartz.Trigger;
 import org.springframework.context.annotation.Bean;
@@ -17,9 +17,9 @@ public class QuartzConfiguration {
      * Creates a SchedulerFactoryBean for configuring and starting the Quartz Scheduler.
      *
      * @param dataSource
-     *            The data source for the Quartz Scheduler.
+     *         The data source for the Quartz Scheduler.
      * @param cronTriggers
-     *            A list of Cron Triggers, one for each configured tenant.
+     *         A list of Cron Triggers, one for each configured tenant.
      * @return SchedulerFactoryBean configured for the AutoPlanScheduler.
      */
     @Bean

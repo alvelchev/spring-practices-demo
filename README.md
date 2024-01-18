@@ -47,6 +47,7 @@ Added integration with Docker.On every push event to main branch this action gen
 - Custom validator: https://www.baeldung.com/spring-mvc-custom-validator
 - Spring Boot Actuator: https://www.baeldung.com/spring-boot-actuators
 - Injecting Git Information Into Spring: https://www.baeldung.com/spring-git-information
+- Quartz Job Scheduler with Cron Triggers and Expressions: https://www.quartz-scheduler.org/
 
 # Branches:
 - Branch with name: "java11Version" is set up for JDK11

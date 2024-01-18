@@ -1,4 +1,4 @@
-package com.springpageable.configuration.autoplan;
+package com.springpageable.configuration.quartz;
 
 import org.quartz.JobDetail;
 import org.quartz.Trigger;
@@ -16,40 +16,34 @@ import java.util.Map;
 import java.util.TimeZone;
 
 /**
- * Configuration class for setting up Quartz scheduler to execute the AutoPlanJob at specified intervals for each
- * configured tenant.
+ * Configuration class for setting up Quartz scheduler to execute the Job at specified intervals for each configured
+ * trigger.
  *
  * <p>
- * The class defines and configures the JobDetail bean for the {@link QuartzAutoPlanJob}, which is responsible for
- * retrieving all workshops for a given tenant with the auto plan toggle enabled and sending requests to Planning to
- * create auto plans. Additionally, it creates a list of Cron Triggers, one for each configured tenant, based on the
- * provided cron expressions.
+ * The class defines and configures the JobDetail bean for the {@link QuartzJob}, which is responsible for some logic
+ * Additionally, it creates a list of Cron Triggers, one for each configured tenant, based on the provided cron
+ * expressions.
  */
 @Configuration
-public class AutoPlanQuartzConfig {
+public class QuartzConfig {
 
-    private static final String AUTO_PLAN_GROUP_NAME = "AutoPlanTriggerGroup";
-    private static final String AUTO_PLAN_JOB_NAME = "AutoPlanJob";
-    private static final String AUTO_PLAN_JOB_BEAN_NAME = "autoPlanJobDetail";
-    private static final String AUTO_PLAN_TRIGGER_NAME = "AutoPlanTrigger_";
-
-
-    public AutoPlanQuartzConfig() {
-
-    }
+    private static final String QUARTZ_GROUP_NAME = "QuartzTriggerGroup";
+    private static final String QUARTZ_JOB_NAME = "QuartzJob";
+    private static final String QUARTZ_JOB_BEAN_NAME = "quartzJobDetail";
+    private static final String QUARTZ_TRIGGER_NAME = "QuartzTrigger_";
 
     /**
      * Creates a JobDetail bean, which defines the job to be executed by Quartz.
      *
      * @return JobDetail bean configured for the AutoPlanJob.
      */
-    @Bean(name = AUTO_PLAN_JOB_BEAN_NAME)
-    public JobDetail autoPlanJobDetail() {
+    @Bean(name = QUARTZ_JOB_BEAN_NAME)
+    public JobDetail quartzJobDetail() {
         JobDetailFactoryBean factoryBean = new JobDetailFactoryBean();
-        factoryBean.setJobClass(QuartzAutoPlanJob.class);
+        factoryBean.setJobClass(QuartzJob.class);
         factoryBean.setDurability(true);
-        factoryBean.setGroup(AUTO_PLAN_GROUP_NAME);
-        factoryBean.setName(AUTO_PLAN_JOB_NAME);
+        factoryBean.setGroup(QUARTZ_GROUP_NAME);
+        factoryBean.setName(QUARTZ_JOB_NAME);
         factoryBean.setDescription(
                 "This job retrieves all workshops for given tenant with auto plan toggle enabled and send request to Planning to create autoplans");
         factoryBean.afterPropertiesSet();
@@ -60,20 +54,22 @@ public class AutoPlanQuartzConfig {
      * Creates a list of Cron Triggers, one for each configured tenant.
      *
      * @param autoPlanJobDetail
-     *            The JobDetail bean for the AutoPlanJob.
+     *         The JobDetail bean for the AutoPlanJob.
      * @return A list of Cron Triggers, each associated with a specific tenant.
      * @throws ParseException
-     *             If there's an issue parsing the cron expression.
+     *         If there's an issue parsing the cron expression.
      */
     @Bean
-    public List<Trigger> cronTriggers(@Qualifier(AUTO_PLAN_JOB_BEAN_NAME) JobDetail autoPlanJobDetail)
+    public List<Trigger> cronTriggers(@Qualifier(QUARTZ_JOB_BEAN_NAME) JobDetail autoPlanJobDetail)
             throws ParseException {
         List<Trigger> triggers = new ArrayList<>();
         Map<String, String> tenantCronExpressionConfig = new HashMap<>();
         tenantCronExpressionConfig.put("PS_EHP", "0 * * * * ?");
-        for (String configuredTenant : tenantCronExpressionConfig.keySet()) {
+        for (Map.Entry<String, String> entry : tenantCronExpressionConfig.entrySet()) {
             // Use the configured tenant to get the cron expression
-            String cronExpression = tenantCronExpressionConfig.get(configuredTenant);
+            String configuredTenant = entry.getKey();
+            String cronExpression = entry.getValue();
+
             if (cronExpression == null) {
                 throw new IllegalArgumentException(
                         "Cron expression not defined for the configured tenant: " + configuredTenant);
@@ -82,8 +78,8 @@ public class AutoPlanQuartzConfig {
             CronTriggerFactoryBean factoryBean = new CronTriggerFactoryBean();
             factoryBean.setJobDetail(autoPlanJobDetail);
             factoryBean.setCronExpression(cronExpression);
-            factoryBean.setGroup(AUTO_PLAN_GROUP_NAME);
-            factoryBean.setName(AUTO_PLAN_TRIGGER_NAME + configuredTenant);
+            factoryBean.setGroup(QUARTZ_GROUP_NAME);
+            factoryBean.setName(QUARTZ_TRIGGER_NAME + configuredTenant);
             factoryBean.setDescription(configuredTenant);
             factoryBean.setTimeZone(TimeZone.getTimeZone("UTC"));
             factoryBean.afterPropertiesSet();
