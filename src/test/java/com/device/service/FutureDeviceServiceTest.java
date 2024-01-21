@@ -2,6 +2,7 @@ package com.device.service;
 
 import com.springpageable.dto.FutureDeviceDTO;
 import com.springpageable.dto.GetFutureDeviceResponseDTO;
+import com.springpageable.event.ProcessEventPublisher;
 import com.springpageable.exception.BadRequestException;
 import com.springpageable.exception.ConflictException;
 import com.springpageable.exception.ResourceNotFoundException;
@@ -25,147 +26,166 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
-import static com.device.mock.Constants.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
+import static com.device.mock.Constants.FIXTURE_FUTURE_DEVICE;
+import static com.device.mock.Constants.FIXTURE_FUTURE_DEVICE_DTO;
+import static com.device.mock.Constants.FIXTURE_GET_FUTURE_DEVICE_RESPONSE_DTO;
+import static com.device.mock.Constants.LIST_OF_USERS;
+import static com.device.mock.Constants.SEARCH_PARAMETER_KEY;
+import static com.device.mock.Constants.TEST_CUSTOMER_ID;
+import static com.device.mock.Constants.TEST_SEARCH_PARAMETER;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class FutureDeviceServiceTest {
 
-  private FutureDeviceService underTest;
+    private FutureDeviceService underTest;
 
-  @Mock private FutureDeviceRepository mockFutureDeviceRepository;
-  @Mock private UserRepository mockUserRepository;
-  @Mock private Pageable mockPageable;
+    @Mock
+    private FutureDeviceRepository mockFutureDeviceRepository;
+    @Mock
+    private UserRepository mockUserRepository;
 
-  @Fixture(FIXTURE_FUTURE_DEVICE_DTO)
-  private FutureDeviceDTO futureDeviceDTO;
+    @Mock
+    private ProcessEventPublisher mockApplicationEventPublisher;
 
-  @Fixture(FIXTURE_FUTURE_DEVICE)
-  private List<FutureDevice> futureDeviceList;
+    @Mock
+    private Pageable mockPageable;
 
-  @Fixture(LIST_OF_USERS)
-  private List<User> users;
+    @Fixture(FIXTURE_FUTURE_DEVICE_DTO)
+    private FutureDeviceDTO futureDeviceDTO;
 
-  @Fixture(FIXTURE_GET_FUTURE_DEVICE_RESPONSE_DTO)
-  private List<GetFutureDeviceResponseDTO> getFutureDeviceResponseDtoList;
+    @Fixture(FIXTURE_FUTURE_DEVICE)
+    private List<FutureDevice> futureDeviceList;
 
-  @BeforeEach
-  void setUp() throws Exception {
-    FixtureAnnotations.initFixtures(this);
+    @Fixture(LIST_OF_USERS)
+    private List<User> users;
 
-    underTest =
-        new FutureDeviceService(
-            mockFutureDeviceRepository, new FutureDeviceMapperImpl(), mockUserRepository);
-  }
+    @Fixture(FIXTURE_GET_FUTURE_DEVICE_RESPONSE_DTO)
+    private List<GetFutureDeviceResponseDTO> getFutureDeviceResponseDtoList;
 
-  @Test
-  void testThat_deleteFutureDevice_returnsResult() throws BadRequestException {
-    // Arrange
-    when(mockFutureDeviceRepository.findById(anyLong()))
-        .thenReturn(Optional.of(futureDeviceList.get(0)));
+    @BeforeEach
+    void setUp() throws Exception {
+        FixtureAnnotations.initFixtures(this);
 
-    // Act
-    underTest.deleteFutureDevice(TEST_CUSTOMER_ID);
+        underTest =
+                new FutureDeviceService(
+                        mockFutureDeviceRepository, new FutureDeviceMapperImpl(), mockUserRepository,
+                        mockApplicationEventPublisher);
+    }
 
-    // Assert
-    verify(mockFutureDeviceRepository).deleteById(anyLong());
-  }
+    @Test
+    void testThat_deleteFutureDevice_returnsResult() throws BadRequestException {
+        // Arrange
+        when(mockFutureDeviceRepository.findById(anyLong()))
+                .thenReturn(Optional.of(futureDeviceList.get(0)));
 
-  @Test
-  void testThat_delete_throwsResourceNotFound_inCaseIdDoesNotExists() {
-    // Arrange
-    when(mockFutureDeviceRepository.findById(anyLong())).thenReturn(Optional.empty());
+        // Act
+        underTest.deleteFutureDevice(TEST_CUSTOMER_ID);
 
-    // Act
-    var thrown =
-        assertThrows(
-            ResourceNotFoundException.class, () -> underTest.deleteFutureDevice(TEST_CUSTOMER_ID));
+        // Assert
+        verify(mockFutureDeviceRepository).deleteById(anyLong());
+    }
 
-    // Assert
-    assertEquals("No future device found for id: 15", thrown.getMessage());
-  }
+    @Test
+    void testThat_delete_throwsResourceNotFound_inCaseIdDoesNotExists() {
+        // Arrange
+        when(mockFutureDeviceRepository.findById(anyLong())).thenReturn(Optional.empty());
 
-  @Test
-  void testThat_createFutureDevice_throwsResourceNotFoundException_whenCustomer_notExists() {
-    // Arrange
-    when(mockUserRepository.findById(anyLong())).thenReturn(Optional.empty());
+        // Act
+        var thrown =
+                assertThrows(
+                        ResourceNotFoundException.class, () -> underTest.deleteFutureDevice(TEST_CUSTOMER_ID));
 
-    // Act
-    var thrown =
-        assertThrows(
-            ResourceNotFoundException.class, () -> underTest.createFutureDevice(futureDeviceDTO));
+        // Assert
+        assertEquals("No future device found for id: 15", thrown.getMessage());
+    }
 
-    // Assert
-    assertEquals(
-        String.format("There is no customer with id %d", futureDeviceDTO.getCustomerId()),
-        thrown.getMessage());
-  }
+    @Test
+    void testThat_createFutureDevice_throwsResourceNotFoundException_whenCustomer_notExists() {
+        // Arrange
+        when(mockUserRepository.findById(anyLong())).thenReturn(Optional.empty());
 
-  @Test
-  void
-      testThat_createFutureDevice_throwsConflictException_whenCombinationAlreadyExistsInTheDatabase() {
-    // Arrange
-    when(mockUserRepository.findById(anyLong())).thenReturn(Optional.of(users.get(0)));
-    when(mockFutureDeviceRepository.save(any(FutureDevice.class)))
-        .thenThrow(new DataIntegrityViolationException("test"));
+        // Act
+        var thrown =
+                assertThrows(
+                        ResourceNotFoundException.class, () -> underTest.createFutureDevice(futureDeviceDTO));
 
-    // Act
-    var thrown =
-        assertThrows(ConflictException.class, () -> underTest.createFutureDevice(futureDeviceDTO));
+        // Assert
+        assertEquals(
+                String.format("There is no customer with id %d", futureDeviceDTO.getCustomerId()),
+                thrown.getMessage());
+    }
 
-    // Assert
-    assertNotNull(thrown);
-    assertEquals(
-        String.format(
-            "Combination with serial number %s,productId %s and customerId %d already exists",
-            futureDeviceDTO.getSerialNumber(),
-            futureDeviceDTO.getProductId(),
-            futureDeviceDTO.getCustomerId()),
-        thrown.getMessage());
-  }
+    @Test
+    void
+    testThat_createFutureDevice_throwsConflictException_whenCombinationAlreadyExistsInTheDatabase() {
+        // Arrange
+        when(mockUserRepository.findById(anyLong())).thenReturn(Optional.of(users.get(0)));
+        when(mockFutureDeviceRepository.save(any(FutureDevice.class)))
+                .thenThrow(new DataIntegrityViolationException("test"));
 
-  @Test
-  void testThat_createFutureDevice_passed_successfully() {
-    // Arrange
-    when(mockUserRepository.findById(anyLong())).thenReturn(Optional.of(users.get(0)));
-    when(mockFutureDeviceRepository.save(any(FutureDevice.class)))
-        .thenReturn(futureDeviceList.get(0));
+        // Act
+        var thrown =
+                assertThrows(ConflictException.class, () -> underTest.createFutureDevice(futureDeviceDTO));
 
-    // Act
-    underTest.createFutureDevice(futureDeviceDTO);
+        // Assert
+        assertNotNull(thrown);
+        assertEquals(
+                String.format(
+                        "Combination with serial number %s,productId %s and customerId %d already exists",
+                        futureDeviceDTO.getSerialNumber(),
+                        futureDeviceDTO.getProductId(),
+                        futureDeviceDTO.getCustomerId()),
+                thrown.getMessage());
+    }
 
-    // Assert
-    verify(mockFutureDeviceRepository).save(any());
-  }
+    @Test
+    void testThat_createFutureDevice_passed_successfully() {
+        // Arrange
+        when(mockUserRepository.findById(anyLong())).thenReturn(Optional.of(users.get(0)));
+        when(mockFutureDeviceRepository.save(any(FutureDevice.class)))
+                .thenReturn(futureDeviceList.get(0));
 
-  @Test
-  void testThat_retrieveFutureDevices_returnsResult() throws BadRequestException {
-    // Arrange
-    when(mockFutureDeviceRepository.findFutureDevices(any(Pageable.class), anyString()))
-        .thenReturn(new PageImpl<>(futureDeviceList));
-    // Act
-    var actualResult =
-        underTest.retrieveFutureDevices(mockPageable, TEST_SEARCH_PARAMETER).getContent();
+        // Act
+        underTest.createFutureDevice(futureDeviceDTO);
 
-    // Assert
-    verify(mockFutureDeviceRepository).findFutureDevices(mockPageable, SEARCH_PARAMETER_KEY);
-    assertEquals(getFutureDeviceResponseDtoList.get(0).getId(), actualResult.get(0).getId());
-  }
+        // Assert
+        verify(mockFutureDeviceRepository).save(any());
+    }
 
-  @Test
-  void testThat_retrieveFutureDevices_whenNoResultFound() throws BadRequestException {
-    // Arrange
-    when(mockFutureDeviceRepository.findFutureDevices(any(Pageable.class), anyString()))
-            .thenReturn(new PageImpl<>(List.of()));
+    @Test
+    void testThat_retrieveFutureDevices_returnsResult() throws BadRequestException {
+        // Arrange
+        when(mockFutureDeviceRepository.findFutureDevices(any(Pageable.class), anyString()))
+                .thenReturn(new PageImpl<>(futureDeviceList));
+        // Act
+        var actualResult =
+                underTest.retrieveFutureDevices(mockPageable, TEST_SEARCH_PARAMETER).getContent();
 
-    //Act
-    var actualResult = underTest.retrieveFutureDevices(mockPageable, SEARCH_PARAMETER_KEY).getContent();
+        // Assert
+        verify(mockFutureDeviceRepository).findFutureDevices(mockPageable, SEARCH_PARAMETER_KEY);
+        assertEquals(getFutureDeviceResponseDtoList.get(0).getId(), actualResult.get(0).getId());
+    }
 
-    // Assert
-    assertNotNull(actualResult);
-    assertTrue(actualResult.isEmpty());
-  }
+    @Test
+    void testThat_retrieveFutureDevices_whenNoResultFound() throws BadRequestException {
+        // Arrange
+        when(mockFutureDeviceRepository.findFutureDevices(any(Pageable.class), anyString()))
+                .thenReturn(new PageImpl<>(List.of()));
+
+        //Act
+        var actualResult = underTest.retrieveFutureDevices(mockPageable, SEARCH_PARAMETER_KEY).getContent();
+
+        // Assert
+        assertNotNull(actualResult);
+        assertTrue(actualResult.isEmpty());
+    }
 }

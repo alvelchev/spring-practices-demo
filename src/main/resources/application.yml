@@ -21,7 +21,6 @@ spring:
           sharedCache:
             mode: ENABLE_SELECTIVE
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
         default_schema: dts
         jdbc.lob.non_contextual_creation: true
     hibernate.ddl-auto: none

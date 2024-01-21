@@ -1,4 +1,5 @@
-# Java Standarts
+### Please "star" this repository if you find it useful. Thank you.
+# Java Standards
 
 ![Spring](https://github.com/alvelchev/spring-practices-demo/actions/workflows/build.yml/badge.svg)
 [![Docker Image CI](https://github.com/alvelchev/spring-practices-demo/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/alvelchev/spring-practices-demo/actions/workflows/docker-image.yml)
@@ -18,9 +19,10 @@ CRUD operations</b>.Also is demonstrated how to return a <b>Pageable response</b
 etc.Created <b>Global exception handler</b> for handle exception from the codebase and custom spring validator(example
 with annotation for field and class level).Demo of how to use CriteriaBuilder for data retrieving.Added configuration for
 collecting application metrics via Spring Boot Actuator and configuration for Injecting Git Information Into Spring.
+In the project you can find implementation of Quartz scheduler using Cron Triggers and Expressions and Spring Custom Events.
 
 # GitHub actions pipelines integration
-Added integration with GitHub actions for code analyzis with sonarcloud and codecov for code coverage report               
+Added integration with GitHub actions for code analyses with sonarcloud and codecov for code coverage report               
 Added integration with Docker.On every push event to main branch this action generates a new docker image with the relevant image tag.
 
 - https://www.sonarsource.com/products/sonarcloud/
@@ -38,16 +40,16 @@ Added integration with Docker.On every push event to main branch this action gen
 
 # Provided examples with implementation on SpringBoot.Links for more info:
 
-- PageAble and sorting response: https://www.baeldung.com/spring-data-jpa-pagination-sorting
-- Flyway: https://www.baeldung.com/database-migrations-with-flyway
-- JUNIT5: https://www.baeldung.com/junit-5
-- Global exception handler in JAVA: https://www.baeldung.com/java-global-exception-handler
-- Actuator: https://www.baeldung.com/spring-boot-actuators
-- CriteriaBuilder: https://www.baeldung.com/spring-data-criteria-queries
-- Custom validator: https://www.baeldung.com/spring-mvc-custom-validator
+- PageAble and sorting response: https://www.baeldung.com/spring-data-jpa-pagination-sorting → (controller package)
+- Flyway: https://www.baeldung.com/database-migrations-with-flyway → (resources.db.migration package)
+- JUNIT5: https://www.baeldung.com/junit-5 → (tests package)
+- Global exception handler in JAVA: https://www.baeldung.com/java-global-exception-handler → (advice package)
+- CriteriaBuilder: https://www.baeldung.com/spring-data-criteria-queries → (repository.custom package and CriteriaBuilderExampleController)
+- Custom validator: https://www.baeldung.com/spring-mvc-custom-validator → (validator package)
 - Spring Boot Actuator: https://www.baeldung.com/spring-boot-actuators
-- Injecting Git Information Into Spring: https://www.baeldung.com/spring-git-information
-- Quartz Job Scheduler with Cron Triggers and Expressions: https://www.quartz-scheduler.org/
+- Injecting Git Information Into Spring: https://www.baeldung.com/spring-git-information → (HistoryLinkProvidingGitInfoContributor.class)
+- Quartz Job Scheduler with Cron Triggers and Expressions: https://www.quartz-scheduler.org/ → (configuration.quartz package)
+- Spring Custom Events: https://www.baeldung.com/spring-events → (event package)
 
 # Branches:
 - Branch with name: "java11Version" is set up for JDK11

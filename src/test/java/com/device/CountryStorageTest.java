@@ -1,27 +1,26 @@
 package com.device;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.springpageable.storage.CountryStorage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.List;
 
-import static com.device.mock.Constants.*;
-import static com.springpageable.storage.CountryStorage.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.when;
+import static com.device.mock.Constants.ALL_COUNTRIES_SIZE;
+import static com.device.mock.Constants.COUNTRY_BG_KEY;
+import static com.device.mock.Constants.COUNTRY_BG_VALUE;
+import static com.device.mock.Constants.COUNTRY_DE_KEY;
+import static com.device.mock.Constants.COUNTRY_DE_VALUE;
+import static com.device.mock.Constants.EMPTY_STRING;
+import static com.device.mock.Constants.NON_EXISTING_COUNTRY_CODE;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(MockitoExtension.class)
 class CountryStorageTest {
@@ -42,7 +41,8 @@ class CountryStorageTest {
         assertFalse(result.isEmpty());
         assertEquals(2, result.size());
         assertEquals(2, result.stream()
-                .filter(country -> country.getName().equals(COUNTRY_BG_VALUE) || country.getName().equals(COUNTRY_DE_VALUE))
+                .filter(country -> country.getName().equals(COUNTRY_BG_VALUE) || country.getName()
+                        .equals(COUNTRY_DE_VALUE))
                 .count());
     }
 
@@ -107,7 +107,8 @@ class CountryStorageTest {
         // Act & Assert
         assertTrue(countryStorage.areAllCountryCodesSupported(List.of(COUNTRY_BG_KEY, COUNTRY_DE_KEY)));
         assertFalse(
-                countryStorage.areAllCountryCodesSupported(List.of(COUNTRY_BG_KEY, NON_EXISTING_COUNTRY_CODE, COUNTRY_DE_KEY)));
+                countryStorage.areAllCountryCodesSupported(
+                        List.of(COUNTRY_BG_KEY, NON_EXISTING_COUNTRY_CODE, COUNTRY_DE_KEY)));
     }
 
     @Test
