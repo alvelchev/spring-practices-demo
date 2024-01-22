@@ -4,6 +4,7 @@ import com.springpageable.dto.ErrorDetailsDTO;
 import com.springpageable.exception.BadRequestException;
 import com.springpageable.exception.ConflictException;
 import com.springpageable.exception.ResourceNotFoundException;
+import jakarta.validation.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.multipart.support.MissingServletRequestPartException;
 
-import jakarta.validation.ConstraintViolationException;
 import java.time.LocalDateTime;
 
 import static org.springframework.http.HttpStatus.CONFLICT;
@@ -32,14 +32,16 @@ public class GlobalExceptionHandler {
         return this.createErrorDetails(e, request);
     }
 
-    @ExceptionHandler({MissingServletRequestParameterException.class, MethodArgumentTypeMismatchException.class, ConstraintViolationException.class, MissingServletRequestPartException.class, MissingRequestHeaderException.class, HttpMessageNotReadableException.class, BadRequestException.class})
+    @ExceptionHandler({ MissingServletRequestParameterException.class, MethodArgumentTypeMismatchException.class,
+            ConstraintViolationException.class, MissingServletRequestPartException.class,
+            MissingRequestHeaderException.class, HttpMessageNotReadableException.class, BadRequestException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorDetailsDTO handleBadRequestExceptions(final Exception e, final WebRequest request) {
         log.error("{}, endpoint: {}", e.getMessage(), request.getDescription(false));
         return this.createErrorDetails(e, request);
     }
 
-    @ExceptionHandler({ResourceNotFoundException.class})
+    @ExceptionHandler({ ResourceNotFoundException.class })
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorDetailsDTO handleEntityNotFoundException(final ResourceNotFoundException e, final WebRequest request) {
         return this.createErrorDetails((Exception) e, request);

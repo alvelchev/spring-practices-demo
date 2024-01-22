@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public enum HealthStatus implements Describable {
 
-    ALRIGHT("Alright"),     //0
-    OBSERVE("Observe"),     //1
-    CRITICAL("Critical"),   //2
-    NOT_APPLICABLE("N/A");  //3
+    ALRIGHT("Alright"), // 0
+    OBSERVE("Observe"), // 1
+    CRITICAL("Critical"), // 2
+    NOT_APPLICABLE("N/A"); // 3
 
     @Getter
     private final String value;
@@ -32,7 +32,8 @@ public enum HealthStatus implements Describable {
     /**
      * Converts ordinal of componentStatus to ComponentStatus
      *
-     * @param value - the ordinal of {@link HealthStatus}
+     * @param value
+     *            - the ordinal of {@link HealthStatus}
      * @return {@link HealthStatus} or null
      */
     public static Details getByValue(Integer value) {

@@ -1,11 +1,17 @@
 package com.springpageable.repository.custom;
 
-import com.springpageable.enums.LdapGroup;
-import com.springpageable.model.User;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.query.QueryUtils;
+
+import com.springpageable.enums.LdapGroup;
+import com.springpageable.model.User;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -14,10 +20,6 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class UserRepositoryCriteriaImpl implements UserRepositoryCriteria {
 
@@ -34,7 +36,8 @@ public class UserRepositoryCriteriaImpl implements UserRepositoryCriteria {
             List<LdapGroup> groups, String searchParameter, Pageable p) {
         final long totalRows = countAll(usernames, excludeUsernames, groups, searchParameter);
         return new PageImpl<>(
-                (totalRows == 0) ? List.of() : getResultList(usernames, excludeUsernames, groups, searchParameter, p), p,
+                (totalRows == 0) ? List.of() : getResultList(usernames, excludeUsernames, groups, searchParameter, p),
+                p,
                 totalRows);
     }
 
@@ -73,7 +76,8 @@ public class UserRepositoryCriteriaImpl implements UserRepositoryCriteria {
                     criteriaBuilder.like(criteriaBuilder.lower(root.get(FIRST_NAME)), searchParameter),
                     criteriaBuilder.like(criteriaBuilder.lower(root.get(LAST_NAME)), searchParameter),
                     criteriaBuilder.like(criteriaBuilder.lower(criteriaBuilder.concat(
-                            criteriaBuilder.concat(root.get(FIRST_NAME), " "), root.get(LAST_NAME))), searchParameter)));
+                            criteriaBuilder.concat(root.get(FIRST_NAME), " "), root.get(LAST_NAME))),
+                            searchParameter)));
         }
         if (!excludeUsernames.isEmpty()) {
             predicates.add(criteriaBuilder.not(root.get(USERNAME).in(excludeUsernames)));

@@ -5,10 +5,11 @@ package com.springpageable.enums;
  */
 public enum LdapGroup {
 
-    ADMIN(UserRole.ADMIN),                     // 0
+    ADMIN(UserRole.ADMIN), // 0
     HIGH_PRIVILEGED(UserRole.HIGH_PRIVILEGED), // 1
-    LOW_PRIVILEGED(UserRole.LOW_PRIVILEGED),   // 2
-    GENERAL(UserRole.GENERAL);                       // 3
+    LOW_PRIVILEGED(UserRole.LOW_PRIVILEGED), // 2
+    GENERAL(UserRole.GENERAL); // 3
+
     private static final LdapGroup[] values = LdapGroup.values();
 
     private final String name;

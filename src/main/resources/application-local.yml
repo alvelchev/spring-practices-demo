@@ -1,11 +1,11 @@
 # Spring configuration
 spring:
-  # Database configurations
-  datasource:
-    url: jdbc:postgresql://localhost:5432/
-    username: postgres
-    password: kla4st#en
-    hikari:
-      schema: dts
-  # Flyway configuration
-  flyway.locations: classpath:db/local_migrations
+    # Database configurations
+    datasource:
+        url: jdbc:postgresql://localhost:5432/
+        username: postgres
+        password: kla4st#en
+        hikari:
+            schema: dts
+    # Flyway configuration
+    flyway.locations: classpath:db/local_migrations

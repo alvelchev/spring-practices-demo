@@ -1,6 +1,12 @@
 package com.device;
 
-import com.springpageable.configuration.HistoryLinkProvidingGitInfoContributor;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.Mockito.when;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -8,11 +14,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.info.GitProperties;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import com.springpageable.configuration.HistoryLinkProvidingGitInfoContributor;
 
 /**
  * Copyright (c) 2023 Robert Bosch GmbH. All rights reserved. Created by VEA3SF on 17.7.2023 г..
@@ -36,7 +38,7 @@ class HistoryLinkProvidingGitInfoContributorTest {
     }
 
     @Test
-    public void postProcessContent_ShouldAddHistoryLink_WhenCommitIdExists() {
+    void postProcessContent_ShouldAddHistoryLink_WhenCommitIdExists() {
         // Arrange
         String commitId = "abcd1234";
         Map<String, Object> content = new HashMap<>();
@@ -54,7 +56,7 @@ class HistoryLinkProvidingGitInfoContributorTest {
     }
 
     @Test
-    public void postProcessContent_ShouldNotAddHistoryLink_WhenCommitIdIsNull() {
+    void postProcessContent_ShouldNotAddHistoryLink_WhenCommitIdIsNull() {
         // Arrange
         Map<String, Object> content = new HashMap<>();
         content.put("key1", "value1");
