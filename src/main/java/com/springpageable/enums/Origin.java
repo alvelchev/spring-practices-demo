@@ -1,8 +1,8 @@
 package com.springpageable.enums;
 
-import lombok.Getter;
-
 import java.util.Arrays;
+
+import lombok.Getter;
 
 public enum Origin {
     PM_MANUAL_UPLOAD(0),

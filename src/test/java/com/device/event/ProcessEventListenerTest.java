@@ -1,19 +1,20 @@
 package com.device.event;
 
-import com.springpageable.dto.ProcessEventDto;
-import com.springpageable.event.ProcessEvent;
-import com.springpageable.event.ProcessEventListener;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.UUID;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.UUID;
-
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import com.springpageable.dto.ProcessEventDto;
+import com.springpageable.event.ProcessEvent;
+import com.springpageable.event.ProcessEventListener;
 
 @ExtendWith(MockitoExtension.class)
 class ProcessEventListenerTest {

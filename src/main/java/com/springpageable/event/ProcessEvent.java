@@ -1,10 +1,12 @@
 package com.springpageable.event;
 
+import org.springframework.context.ApplicationEvent;
+
 import com.springpageable.dto.ProcessEventDto;
 import com.springpageable.model.FutureDevice;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import org.springframework.context.ApplicationEvent;
 
 @Getter
 @EqualsAndHashCode(callSuper = true)

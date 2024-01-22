@@ -1,14 +1,5 @@
 package com.device;
 
-import com.springpageable.storage.CountryStorage;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.io.IOException;
-import java.util.List;
-
 import static com.device.mock.Constants.ALL_COUNTRIES_SIZE;
 import static com.device.mock.Constants.COUNTRY_BG_KEY;
 import static com.device.mock.Constants.COUNTRY_BG_VALUE;
@@ -21,6 +12,16 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.springpageable.storage.CountryStorage;
 
 @ExtendWith(MockitoExtension.class)
 class CountryStorageTest {
@@ -41,9 +42,9 @@ class CountryStorageTest {
         assertFalse(result.isEmpty());
         assertEquals(2, result.size());
         assertEquals(2, result.stream()
-                .filter(country -> country.getName().equals(COUNTRY_BG_VALUE) || country.getName()
-                        .equals(COUNTRY_DE_VALUE))
-                .count());
+            .filter(country -> country.getName().equals(COUNTRY_BG_VALUE) || country.getName()
+                .equals(COUNTRY_DE_VALUE))
+            .count());
     }
 
     @Test

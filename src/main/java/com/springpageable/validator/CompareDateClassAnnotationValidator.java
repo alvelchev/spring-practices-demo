@@ -6,12 +6,12 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
 public class CompareDateClassAnnotationValidator
-    implements ConstraintValidator<CompareDateClassAnnotation, DateRequestDTO> {
+        implements ConstraintValidator<CompareDateClassAnnotation, DateRequestDTO> {
 
-  @Override
-  public boolean isValid(DateRequestDTO dateRequestDto, ConstraintValidatorContext context) {
-    return !(dateRequestDto.getFromDate() == null
-        || dateRequestDto.getToDate() == null
-        || dateRequestDto.getFromDate().isAfter(dateRequestDto.getToDate()));
-  }
+    @Override
+    public boolean isValid(DateRequestDTO dateRequestDto, ConstraintValidatorContext context) {
+        return !(dateRequestDto.getFromDate() == null
+                || dateRequestDto.getToDate() == null
+                || dateRequestDto.getFromDate().isAfter(dateRequestDto.getToDate()));
+    }
 }

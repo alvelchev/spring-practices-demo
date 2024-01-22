@@ -11,23 +11,23 @@ import java.util.Map;
 @Component
 public class HistoryLinkProvidingGitInfoContributor extends GitInfoContributor {
 
-  @Value("${git.url}")
-  public String gitHubUrl;
+    @Value("${git.url}")
+    public String gitHubUrl;
 
-  public static final String KEY_FOR_LINK = "history";
+    public static final String KEY_FOR_LINK = "history";
 
-  @Autowired
-  public HistoryLinkProvidingGitInfoContributor(GitProperties properties) {
-    super(properties);
-  }
-
-  @Override
-  public void postProcessContent(Map<String, Object> content) {
-    super.postProcessContent(content);
-
-    final String commitId = getProperties().getShortCommitId();
-    if (commitId != null) {
-      content.put(KEY_FOR_LINK, gitHubUrl + commitId);
+    @Autowired
+    public HistoryLinkProvidingGitInfoContributor(GitProperties properties) {
+        super(properties);
     }
-  }
+
+    @Override
+    public void postProcessContent(Map<String, Object> content) {
+        super.postProcessContent(content);
+
+        final String commitId = getProperties().getShortCommitId();
+        if (commitId != null) {
+            content.put(KEY_FOR_LINK, gitHubUrl + commitId);
+        }
+    }
 }

@@ -7,5 +7,6 @@ public final class UserRole {
     public static final String LOW_PRIVILEGED = "ROLE_LOW_PRIVILEGED";
     public static final String GENERAL = "ROLE_GENERAL";
 
-    private UserRole() { }
+    private UserRole() {
+    }
 }

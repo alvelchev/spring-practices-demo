@@ -15,21 +15,22 @@ import java.io.IOException;
 
 @Configuration
 @ConditionalOnProperty(value = "springdoc.api-docs.enabled", havingValue = "true")
-@ConfigurationPropertiesScan("com.device.configuration")
+@ConfigurationPropertiesScan("com.springpageable.configuration")
 @AllArgsConstructor
 public class ApplicationConfig {
 
-  @Bean
-  public FutureDeviceMapper futureDeviceMapper() {
-    return new FutureDeviceMapperImpl();
-  }
-  @Bean
-  public UserMapper userMapper() {
-    return new UserMapperImpl();
-  }
+    @Bean
+    public FutureDeviceMapper futureDeviceMapper() {
+        return new FutureDeviceMapperImpl();
+    }
 
-  @Bean
-  public CountryStorage countryStorage() throws IOException {
-    return new CountryStorage();
-  }
+    @Bean
+    public UserMapper userMapper() {
+        return new UserMapperImpl();
+    }
+
+    @Bean
+    public CountryStorage countryStorage() throws IOException {
+        return new CountryStorage();
+    }
 }

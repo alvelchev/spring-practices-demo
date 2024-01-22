@@ -1,10 +1,12 @@
 package com.device.event;
 
-import com.springpageable.event.ProcessEvent;
-import com.springpageable.event.ProcessEventPublisher;
-import com.springpageable.model.FutureDevice;
-import ie.corballis.fixtures.annotation.Fixture;
-import ie.corballis.fixtures.annotation.FixtureAnnotations;
+import static com.device.mock.Constants.FIXTURE_FUTURE_DEVICE;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,12 +15,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 
-import java.util.List;
+import com.springpageable.event.ProcessEvent;
+import com.springpageable.event.ProcessEventPublisher;
+import com.springpageable.model.FutureDevice;
 
-import static com.device.mock.Constants.FIXTURE_FUTURE_DEVICE;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import ie.corballis.fixtures.annotation.Fixture;
+import ie.corballis.fixtures.annotation.FixtureAnnotations;
 
 @ExtendWith(MockitoExtension.class)
 class ProcessEventPublisherTest {
@@ -35,7 +37,6 @@ class ProcessEventPublisherTest {
     @BeforeEach
     void setUp() throws Exception {
         FixtureAnnotations.initFixtures(this);
-
     }
 
     @Test

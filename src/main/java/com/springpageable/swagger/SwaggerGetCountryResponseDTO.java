@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 public class SwaggerGetCountryResponseDTO {
 
-  @Schema(example = "Bulgaria")
-  private String name;
+    @Schema(example = "Bulgaria")
+    private String name;
 
-  @Schema(example = "BG")
-  private String countryCode;
+    @Schema(example = "BG")
+    private String countryCode;
 }

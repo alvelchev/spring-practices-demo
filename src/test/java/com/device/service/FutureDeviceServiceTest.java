@@ -1,31 +1,5 @@
 package com.device.service;
 
-import com.springpageable.dto.FutureDeviceDTO;
-import com.springpageable.dto.GetFutureDeviceResponseDTO;
-import com.springpageable.event.ProcessEventPublisher;
-import com.springpageable.exception.BadRequestException;
-import com.springpageable.exception.ConflictException;
-import com.springpageable.exception.ResourceNotFoundException;
-import com.springpageable.model.FutureDevice;
-import com.springpageable.model.User;
-import com.springpageable.model.mapper.FutureDeviceMapperImpl;
-import com.springpageable.repository.FutureDeviceRepository;
-import com.springpageable.repository.UserRepository;
-import com.springpageable.service.FutureDeviceService;
-import ie.corballis.fixtures.annotation.Fixture;
-import ie.corballis.fixtures.annotation.FixtureAnnotations;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-
-import java.util.List;
-import java.util.Optional;
-
 import static com.device.mock.Constants.FIXTURE_FUTURE_DEVICE;
 import static com.device.mock.Constants.FIXTURE_FUTURE_DEVICE_DTO;
 import static com.device.mock.Constants.FIXTURE_GET_FUTURE_DEVICE_RESPONSE_DTO;
@@ -42,6 +16,34 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+
+import com.springpageable.dto.FutureDeviceDTO;
+import com.springpageable.dto.GetFutureDeviceResponseDTO;
+import com.springpageable.event.ProcessEventPublisher;
+import com.springpageable.exception.BadRequestException;
+import com.springpageable.exception.ConflictException;
+import com.springpageable.exception.ResourceNotFoundException;
+import com.springpageable.model.FutureDevice;
+import com.springpageable.model.User;
+import com.springpageable.model.mapper.FutureDeviceMapperImpl;
+import com.springpageable.repository.FutureDeviceRepository;
+import com.springpageable.repository.UserRepository;
+import com.springpageable.service.FutureDeviceService;
+
+import ie.corballis.fixtures.annotation.Fixture;
+import ie.corballis.fixtures.annotation.FixtureAnnotations;
 
 @ExtendWith(MockitoExtension.class)
 class FutureDeviceServiceTest {
@@ -75,10 +77,9 @@ class FutureDeviceServiceTest {
     void setUp() throws Exception {
         FixtureAnnotations.initFixtures(this);
 
-        underTest =
-                new FutureDeviceService(
-                        mockFutureDeviceRepository, new FutureDeviceMapperImpl(), mockUserRepository,
-                        mockApplicationEventPublisher);
+        underTest = new FutureDeviceService(
+                mockFutureDeviceRepository, new FutureDeviceMapperImpl(), mockUserRepository,
+                mockApplicationEventPublisher);
     }
 
     @Test

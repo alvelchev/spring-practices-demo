@@ -1,91 +1,91 @@
 # Application configuration
 server:
-  # Server path
-  servlet:
-    context-path: /
-  port: 8099
+    # Server path
+    servlet:
+        context-path: /
+    port: 8099
 # Spring configuration
 spring:
-  # Flyway configuration
-  flyway:
-    schemas: dts
-    enabled: true
-    baseline-on-migrate: true
-    baseline-version: 0
-    table: dts_schema_version
-  # Hibernate configuration
-  jpa:
-    properties:
-      jakarta:
-        persistence:
-          sharedCache:
-            mode: ENABLE_SELECTIVE
-      hibernate:
-        default_schema: dts
-        jdbc.lob.non_contextual_creation: true
-    hibernate.ddl-auto: none
-  # Profiling configuration
-  profiles.active: local
-  # Database configurations
-  datasource:
-    url: jdbc:postgresql://localhost:5432/
-    username: iomt-connector
-    password: kla4st#en
-  banner:
-    location: classpath:/logo/logo.txt
+    # Flyway configuration
+    flyway:
+        schemas: dts
+        enabled: true
+        baseline-on-migrate: true
+        baseline-version: 0
+        table: dts_schema_version
+    # Hibernate configuration
+    jpa:
+        properties:
+            jakarta:
+                persistence:
+                    sharedCache:
+                        mode: ENABLE_SELECTIVE
+            hibernate:
+                default_schema: dts
+                jdbc.lob.non_contextual_creation: true
+        hibernate.ddl-auto: none
+    # Profiling configuration
+    profiles.active: local
+    # Database configurations
+    datasource:
+        url: jdbc:postgresql://localhost:5432/
+        username: iomt-connector
+        password: kla4st#en
+    banner:
+        location: classpath:/logo/logo.txt
 # Swagger-UI configurations
 springdoc:
-  api-docs.enabled: true
-  pathsToMatch: /v*/**, /route/v*/**
-  swagger-ui:
-    server-url: http://localhost:8099
-    operationsSorter: alpha
-    path: /swagger-ui.html
-    tagsSorter: alpha
-    properties:
-      title: Spring Pageable response
-      description: demo project for returning pageable object containing data for easy filtering and pageing in the UI
+    api-docs.enabled: true
+    pathsToMatch: /v*/**, /route/v*/**
+    swagger-ui:
+        server-url: http://localhost:8099
+        operationsSorter: alpha
+        path: /swagger-ui.html
+        tagsSorter: alpha
+        properties:
+            title: Spring Pageable response
+            description: demo project for returning pageable object containing data for easy filtering and pageing in the UI
 
 # Log configuration
 logging:
-  level:
-    com:
-      azure: ERROR
-      microsoft: ERROR
-      zaxxer: ERROR
-    org:
-      apache: ERROR
-      flywaydb.core.internal:
-        database: ERROR
-        license: ERROR
-      springframework: ERROR
+    level:
+        com:
+            azure: ERROR
+            microsoft: ERROR
+            zaxxer: ERROR
+        org:
+            apache: ERROR
+            flywaydb.core.internal:
+                database: ERROR
+                license: ERROR
+            springframework: ERROR
 
 # Actuator configurations
 management:
-  info:
-    git:
-      enabled: true
-      mode: full
-  endpoints:
-    # disable all, then enable only the needed ones
-    enabled-by-default: false
-    jmx:
-      exposure:
-        include: "health,info,metrics,env"
-    web:
-      exposure:
-        include: "health,info"
-  endpoint:
     info:
-      enabled: true
-    health:
-      enabled: true
-    metrics:
-      enabled: true
-    env:
-      enabled: true
-  # Profiling configuration
-  profiles.active: local
+        git:
+            enabled: true
+            mode: full
+    endpoints:
+        # disable all, then enable only the needed ones
+        enabled-by-default: false
+        jmx:
+            exposure:
+                include: "health,info,metrics,env"
+        web:
+            exposure:
+                include: "health,info"
+    endpoint:
+        info:
+            enabled: true
+        health:
+            enabled: true
+        metrics:
+            enabled: true
+        env:
+            enabled: true
+    # Profiling configuration
+    profiles.active: local
 
 git:
-  url: "https://github.com/alvelchev/spring-practices-demo/commit/"
+    url: "https://github.com/alvelchev/spring-practices-demo/commit/"

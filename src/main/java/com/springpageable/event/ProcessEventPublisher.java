@@ -1,16 +1,17 @@
 package com.springpageable.event;
 
-import com.springpageable.dto.ProcessEventDto;
-import com.springpageable.model.FutureDevice;
+import java.util.UUID;
+
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
+import com.springpageable.dto.ProcessEventDto;
+import com.springpageable.model.FutureDevice;
 
 @Component
 public class ProcessEventPublisher {
 
-    private ApplicationEventPublisher applicationEventPublisher;
+    private final ApplicationEventPublisher applicationEventPublisher;
 
     public ProcessEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
         this.applicationEventPublisher = applicationEventPublisher;
