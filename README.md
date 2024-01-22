@@ -1,7 +1,5 @@
 ### Please "star" this repository if you find it useful. Thank you.
-
-# Java Standards
-
+# Spring Practices Demo
 ![Spring](https://github.com/alvelchev/spring-practices-demo/actions/workflows/build.yml/badge.svg)
 [![Docker Image CI](https://github.com/alvelchev/spring-practices-demo/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/alvelchev/spring-practices-demo/actions/workflows/docker-image.yml)
 [![codecov](https://codecov.io/gh/alvelchev/spring-practices-demo/branch/main/graph/badge.svg)](https://codecov.io/gh/alvelchev/spring-practices-demo)
@@ -11,18 +9,9 @@
 Integration with
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
-# Spring Practices Demo
-
-![Spring Build](https://github.com/alvelchev/spring-practices-demo/actions/workflows/build.yml/badge.svg)
-[![Docker Image CI](https://github.com/alvelchev/spring-practices-demo/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/alvelchev/spring-practices-demo/actions/workflows/docker-image.yml)
-[![Codecov](https://codecov.io/gh/alvelchev/spring-practices-demo/branch/main/graph/badge.svg)](https://codecov.io/gh/alvelchev/spring-practices-demo)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-### Please "star" this repository if you find it useful. Thank you.
-
 ## Table of Contents
 
-- [Introduction](#java-standards)
+- [Introduction](#introduction)
 - [Key Features](#key-features-and-demonstrations)
 - [GitHub Actions Pipelines Integration](#github-actions-pipelines-integration)
 - [How to Start the Project](#how-to-start-the-project)
