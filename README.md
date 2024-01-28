@@ -1,4 +1,4 @@
-### Please "star" this repository if you find it useful. Thank you.
+### Please ⭐ this repository if you find it useful. Thank you.
 # Spring Practices Demo
 ![Spring](https://github.com/alvelchev/spring-practices-demo/actions/workflows/build.yml/badge.svg)
 [![Docker Image CI](https://github.com/alvelchev/spring-practices-demo/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/alvelchev/spring-practices-demo/actions/workflows/docker-image.yml)
