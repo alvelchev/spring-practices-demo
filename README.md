@@ -1,5 +1,7 @@
 ### Please ⭐ this repository if you find it useful. Thank you.
+
 # Spring Practices Demo
+
 ![Spring](https://github.com/alvelchev/spring-practices-demo/actions/workflows/build.yml/badge.svg)
 [![Docker Image CI](https://github.com/alvelchev/spring-practices-demo/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/alvelchev/spring-practices-demo/actions/workflows/docker-image.yml)
 [![codecov](https://codecov.io/gh/alvelchev/spring-practices-demo/branch/main/graph/badge.svg)](https://codecov.io/gh/alvelchev/spring-practices-demo)
@@ -121,6 +123,6 @@ a wide range of Spring Boot features and implementations.
     "name": "springpageable",
     "time": "2022-11-01T20:53:56.838Z",
     "version": "0.0.1",
-    "group": "com.springpageable"
+    "group": "com.springpracticesdemo"
   }
 }

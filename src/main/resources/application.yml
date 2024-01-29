@@ -1,3 +1,6 @@
+application:
+    title: Spring-Practices-Demo
+    version: 1.0.0
 # Application configuration
 server:
     # Server path
