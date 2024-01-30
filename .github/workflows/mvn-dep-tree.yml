@@ -8,23 +8,17 @@ on:
         branches: [ "main" ]
 
 jobs:
-    update-maven-dep-tree:
+    build:
+
         runs-on: ubuntu-latest
 
         steps:
-            -   name: Checkout repository
-                uses: actions/checkout@v4
+            -   uses: actions/checkout@v3
+            -   name: Set up JDK 17
+                uses: actions/setup-java@v3
                 with:
-                    show-progress: 'false'
-
-            -   name: Setup Java JDK
-                uses: actions/setup-java@v4.0.0
-                with:
-                    java-version: 17
-                    # Java distribution. See the list of supported distributions in README file
-                    distribution: temurin
-                    # The package type (jdk, jre, jdk+fx, jre+fx)
-                    java-package: jdk
+                    java-version: '17'
+                    distribution: 'temurin'
                     cache: maven
             -   name: Maven Dependency Tree Dependency Submission
                 uses: advanced-security/maven-dependency-submission-action@v4.0.0
