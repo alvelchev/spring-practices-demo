@@ -5,7 +5,7 @@ name: "MavenDepTreeSubmission"
 
 on:
     push:
-        branches: [ "develop" ]
+        branches: [ "main" ]
 
 jobs:
     build:
