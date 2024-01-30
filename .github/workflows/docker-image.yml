@@ -1,16 +1,16 @@
 name: Docker Image CI
 
 on:
-  push:
-    branches: [ "main" ]
+    push:
+        branches: [ "main" ]
 
 jobs:
 
-  build:
+    build:
 
-    runs-on: ubuntu-latest
+        runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag spring-practices-demo:$(date +%s)
+        steps:
+            -   uses: actions/checkout@v4
+            -   name: Build the Docker image
+                run: docker build . --file Dockerfile --tag spring-practices-demo:$(date +%s)

@@ -8,19 +8,25 @@
         <version>3.2.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.springpageable</groupId>
-    <artifactId>springpageable</artifactId>
-    <version>0.0.1</version>
+    <groupId>com.springpracticesdemo</groupId>
+    <artifactId>springpracticesdemo</artifactId>
+    <version>1.0.0</version>
     <description>Demo project for Spring Boot</description>
+    <developers>
+        <developer>
+            <name>Alexander Velchev</name>
+            <email>al.velchevv@gmail.com</email>
+        </developer>
+    </developers>
     <properties>
         <sonar.organization>alvelchev</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <java.version>17</java.version>
         <sonar.coverage.exclusions>
-            src/main/java/com/springpageable/configuration/quartz/QuartzConfig.java,
-            src/main/java/com/springpageable/configuration/quartz/QuartzJob.java,
-            src/main/java/com/springpageable/configuration/quartz/QuartzConfiguration.java,
-            src/main/java/com/springpageable/DeviceApplication.java
+            src/main/java/com/springpracticesdemo/configuration/quartz/QuartzConfig.java,
+            src/main/java/com/springpracticesdemo/configuration/quartz/QuartzJob.java,
+            src/main/java/com/springpracticesdemo/configuration/quartz/QuartzConfiguration.java,
+            src/main/java/com/springpracticesdemo/SpringPracticesDemoApplication.java
         </sonar.coverage.exclusions>
         <coverage.exclusions>
             **/advice/**,
