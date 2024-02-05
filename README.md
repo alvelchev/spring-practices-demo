@@ -49,6 +49,7 @@ a wide range of Spring Boot features and implementations.
 
 - Integrated with GitHub Actions for code analyses with SonarCloud and Codecov for code coverage reports.
 - Integrated with Docker. On every push event to the main branch, a new Docker image is generated.
+- Integrated with Maven Dependency tree generation.
 
 ### SonarCloud:
 
