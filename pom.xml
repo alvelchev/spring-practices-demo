@@ -19,6 +19,7 @@
         </developer>
     </developers>
     <properties>
+        <spring-boot.version>1</spring-boot.version>
         <sonar.organization>alvelchev</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <java.version>17</java.version>
@@ -239,26 +240,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
-                        <id>readme-md</id>
+                        <id>update-readme</id>
                         <phase>initialize</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.basedir}/docimages</outputDirectory>
+                            <outputDirectory>${project.basedir}</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${project.basedir}/templates</directory>
+                                    <directory>${project.basedir}</directory>
                                     <includes>
-                                        <include>version.svg</include>
+                                        <include>README.md</include>
                                     </includes>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
-                            <encoding>UTF-8</encoding>
                         </configuration>
                     </execution>
                 </executions>
